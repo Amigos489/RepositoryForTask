@@ -30,6 +30,11 @@ public class BookStore {
         Order orderMasterAndMargaret = new Order(bMasterAndMargaret);
         orderMasterAndMargaret.createOrder();
 
+        //Отмена заказа
+        Order order1984 = new Order(b1984);
+        order1984.createOrder();
+        order1984.cancelOrder();
+
 
     }
 }
@@ -185,6 +190,7 @@ public interface IWorkingWithOrder {
     public void createOrder();
     public void cancelOrder();
     public void changeOrder(String newValue);
+    public void pickOrder();
 }
 
 //Заказ на книгу
@@ -206,9 +212,7 @@ class Order implements IWorkingWithOrder{
             this.statusOrder = "новый";
             System.out.println("Создаётся заказ на продукт " + product.nameProduct);
             product.setNumberProduct(product.getNumberProduct() - 1);
-            System.out.println("Теперь на складе продуктов: " + product.nameProduct  + " осталось " + product.numperProduct);
-            System.out.println("Заказ отправлен и получен.");
-            this.statusOrder = "выполнен";
+            System.out.println("Теперь на складе: " + product.nameProduct  + " осталось " + product.numperProduct);
         }
         else if (!this.product.Availability) {
             this.statusOrder = "отменен";
@@ -229,9 +233,9 @@ class Order implements IWorkingWithOrder{
     public void cancelOrder() {
         if (this.statusOrder == "новый") {
             this.statusOrder = "отменен";
-            product.setNumberProduct(this.statusBookOrder = "отменен");
+            product.setNumberProduct(product.getNumberProduct() + 1);
             System.out.println("Заказ на продукт отменён");
-            System.out.println("Теперь на складе книг: " + this.book.getNumberCopies());
+            System.out.println("Теперь на складе: " + this.product.getNumberProduct());
             
         }
         else {
@@ -242,6 +246,12 @@ class Order implements IWorkingWithOrder{
     //Изменение статуса заказа
     public void changeOrder(String newValue) {
         this.setStatusOrder(newValue);
+    }
+
+    //Получение заказа
+    public void pickOrder() {
+        System.out.println("Заказ получен и завершен");
+        this.statusOrder = "выполнен";
     }
 
     //Геттеры и сеттеры
