@@ -1,12 +1,15 @@
-
 import java.time.LocalDate;
 
 /* Класс книги */
 public class Book {
+
+    private static int bookIdCounter = 1; 
+
     private String nameBook;
     private String authorBook;
     private LocalDate dateOfPublication;
     private LocalDate dateAddedToWarehouse;
+    private int bookId;
     private int numberOfCopies; 
     private int numberPages;
     private int price;
@@ -25,7 +28,9 @@ public class Book {
         this.numberPages = numberPages;
         this.price = price;
         this.dateAddedToWarehouse = dateAddedToWarehouse;
-        this.numberOfRequests = 0;                      /* Изначально кол-во запросов равно нулю */  
+        this.numberOfRequests = 0;                      /* Изначально кол-во запросов равно нулю */
+        this.bookId = bookIdCounter++; 
+
 
     }
 
@@ -43,6 +48,7 @@ public class Book {
     /* Вывод информации */
     public void printInfo() {
 
+        System.out.println("ID книги: " + bookId);
         System.out.println("Название: " + nameBook);
         System.out.println("Автор: " + authorBook);
         System.out.println("Дата публикации: " + dateOfPublication);
@@ -54,7 +60,6 @@ public class Book {
         System.out.println("Количество запросов на книгу: " + numberOfRequests);
 
     }
-
 
     /* Геттеры и сеттеры */
     public String getNameBook() {
@@ -128,6 +133,12 @@ public class Book {
         }
     }
 
+    public int getId() {
+        return this.bookId;
+    }
 
+    public void setId(int ID) {
+        this.bookId = ID;
+    }
 
 }

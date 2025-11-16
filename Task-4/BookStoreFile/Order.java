@@ -1,28 +1,25 @@
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.ArrayList;;
 
 /* Класс заказа */
 public class Order {
 
-    private static int nextOrderID = 1;                         /* Позволяет задавать уникальный ID для всех заказов*/
+    private static int nextOrderID = 1;   
 
     private int orderID;
     private int priceOrder;
-    private String customerName;
     private String customerEmail;
     private OrderStatus orderStatus;
     private LocalDate dateOfExecution;
     private Book book;
-    private List<BookRequest> listRequest;                      /* Список запросов на книгу*/
+    private ArrayList<BookRequest> listRequest;      
 
     /* Конструктор */
-    public Order(Book book, String customerName, String customerEmail) {
+    public Order(Book book, String customerEmail) {
         this.orderID = nextOrderID++;
         this.book = book;
         this.priceOrder = book.getPrice();
-        this.customerName = customerName;
-        this.customerEmail = customerEmail;                      /* Цена заказа = цена книги */
+        this.customerEmail = customerEmail;
         this.orderStatus = OrderStatus.NEW;
         this.dateOfExecution = LocalDate.now().plusDays(7);     /* дата исполнения = текущая дата + 7 дней */
         this.listRequest = new ArrayList<>();
@@ -34,7 +31,7 @@ public class Order {
         System.out.println("Статус: " + orderStatus);
         System.out.println("Дата исполнения: " + dateOfExecution);
         System.out.println("Цена заказа: " + priceOrder);
-        System.out.println("Заказчик: " + customerName + " (" + customerEmail + ")");
+        System.out.println("Заказчик: " + customerEmail);
         System.out.println("Книга:");
         book.printInfo();
     }
@@ -42,6 +39,10 @@ public class Order {
     /* Геттеры и сеттеры*/
     public int getOrderID() {
         return orderID;
+    }
+
+    public void setOrderID(int ID) {
+        this.orderID = ID;
     }
 
     public int getPriceOrder() {
@@ -60,12 +61,8 @@ public class Order {
         return book;
     }
 
-    public List<BookRequest> getListRequest() {
+    public ArrayList<BookRequest> getListRequest() {
         return listRequest;
-    }
-
-    public String getCustomerName() {
-        return this.customerName;
     }
 
     public String getCustomerEmail() {

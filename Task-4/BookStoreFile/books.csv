@@ -1,0 +1,4 @@
+bookId,nameBook,authorBook,dateOfPublication,dateAddedToWarehouse,numberOfCopies,numberPages,price,numberOfRequests,availability
+1,"rtyWar and Peace","Leo Tolstoy",1869-01-01,2023-01-15,35,1200,900,0,true
+2,"Crime and Punishment","Fyodor Dostoevsky",1866-01-01,2023-03-10,20,800,700,0,true
+3,"The Master and Margarita","Mikhail Bulgakov",1967-01-01,2023-02-20,15,600,800,0,true
