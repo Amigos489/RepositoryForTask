@@ -1,6 +1,6 @@
 import java.util.Comparator;
 
-public class SortedRequestByRequestCount implements Comparator<BookRequest> {
+public class SortedBookRequestByCount implements Comparator<BookRequest> {
 
     @Override
     public int compare(BookRequest bookRequest1, BookRequest bookRequest2) {

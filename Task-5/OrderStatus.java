@@ -1,4 +1,3 @@
-
 /* Перечисления для статуса заказа */
 
 public enum OrderStatus {

@@ -1,42 +1,37 @@
+import java.util.ArrayList;
 import java.time.LocalDate;
-import java.util.LinkedList;
-import java.util.List;
 
 public class OrderManagement {
 
-    public LinkedList<Order> listOrder; 
-    public LinkedList<BookRequest> listRequests;
+    private ArrayList<Order> listOrder; 
+    private ArrayList<BookRequest> listRequests;
 
     /* Конструктор */
     public OrderManagement() {
-        listOrder = new LinkedList<>();
-        listRequests = new LinkedList<>();
+        listOrder = new ArrayList<>();
+        listRequests = new ArrayList<>();
     }
 
     /* Создание заказа */
-    public Order createOrderOnBook(Book book, String customerName,
-            String customerEmail) {
+    public StatusCreateOrder createOrderOnBook(Book book, String customerEmail) {
 
-        Order order = new Order(book, customerName, customerEmail);
-
+        Order order = new Order(book, customerEmail);
         if (book.getAvailability()) {
-            System.out.println("Создан заказ.");
+            listOrder.add(order);
+            return StatusCreateOrder.SUCCESSFULLY;
         } else {
             BookRequest request = new BookRequest(book); /* Создаём запрос на книгу */
             listRequests.add(request);
             order.getListRequest().add(request);
             order.setOrderStatus(OrderStatus.WAITING);
-            System.out.println("Книги нет на складе. Создан запрос на книгу, заказ в ожидании.");
+            listOrder.add(order);
+            return StatusCreateOrder.EXPECTATION;
         }
-
-        listOrder.add(order);
-        order.orderInfo();
-        return order;
     }
 
 
     /* Отмена заказа */
-    public void cancelOrderOnBook(int ID) {
+    public boolean cancelOrderOnBook(int ID) {
         Order orderToCancel = null;
 
         /* Проверка, что заказ с таким ID есть */
@@ -48,16 +43,15 @@ public class OrderManagement {
         }
 
         if (orderToCancel == null) {
-            System.out.println("Заказ с таким ID не найден.");
-            return;
+            return false;
         }
 
         if (orderToCancel.getOrderStatus() == OrderStatus.NEW || 
                 orderToCancel.getOrderStatus() == OrderStatus.WAITING) {
             orderToCancel.setOrderStatus(OrderStatus.CANCELLED);
-            System.out.println("Заказ отменён.");
+            return true;
         } else {
-            System.out.println("Ошибка! заказ уже завершён или был отменён.");
+            return false;
         }
     }
 
@@ -74,7 +68,6 @@ public class OrderManagement {
         for (Order order : listOrder) {
             if (order.getBook().equals(book) && order.getOrderStatus() == OrderStatus.WAITING) {
                 order.setOrderStatus(OrderStatus.NEW); 
-                System.out.println("Заказ ID " + order.getOrderID() + " готов к выполнению.");
             }
         }
     }
@@ -84,12 +77,11 @@ public class OrderManagement {
         BookRequest request = new BookRequest(book);
         listRequests.add(request);
         book.incrementRequests();
-        System.out.println("Создан запрос на книгу: " + book.getNameBook());
     }
 
     /* Получить все запросы на конкретную книгу */
-    public LinkedList<BookRequest> getRequestsForBook(Book book) {
-        LinkedList<BookRequest> result = new LinkedList<>();
+    public ArrayList<BookRequest> getRequestsForBook(Book book) {
+        ArrayList<BookRequest> result = new ArrayList<>();
         for (BookRequest r : listRequests) {
             if (r.getBook().equals(book)) {
                 result.add(r);
@@ -99,7 +91,7 @@ public class OrderManagement {
     }
 
     /* Получить прибыль */
-    public int getRevenue(LocalDate start, LocalDate end) {                 /* Передаём начальную дату и конечную */
+    public int getRevenue(LocalDate start, LocalDate end) {  
         int sum = 0;
 
         for (Order order : listOrder) {
@@ -116,7 +108,7 @@ public class OrderManagement {
     }
 
     /* Посмотреть кол - во выполненные заказы*/
-    public int getCompletedOrdersCount(LocalDate start, LocalDate end) {    /* Передаём начальную дату и конечную */
+    public int getCompletedOrdersCount(LocalDate start, LocalDate end) {
         int count = 0;
 
         for (Order order : listOrder) {
@@ -133,8 +125,8 @@ public class OrderManagement {
     }
 
     /* Получить список выполненных заказов */
-    public List<Order> getCompletedOrders(LocalDate start, LocalDate end) {
-    List<Order> completedOrders = new LinkedList<>();
+    public ArrayList<Order> getCompletedOrders(LocalDate start, LocalDate end) {
+    ArrayList<Order> completedOrders = new ArrayList<>();
 
         for (Order order : listOrder) {
             if (order.getOrderStatus() == OrderStatus.COMPLETED) {
@@ -147,5 +139,14 @@ public class OrderManagement {
         }
 
         return completedOrders;
+    }
+
+    /* Геттеры */
+    public ArrayList<Order> getAllOrders() {
+        return this.listOrder;
+    }
+
+    public ArrayList<BookRequest> getAllBookRequests() {
+        return this.listRequests;
     }
 }

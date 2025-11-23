@@ -1,12 +1,15 @@
-
 import java.time.LocalDate;
 
 /* Класс книги */
 public class Book {
+
+    private static int bookIdCounter = 1; 
+
     private String nameBook;
     private String authorBook;
     private LocalDate dateOfPublication;
     private LocalDate dateAddedToWarehouse;
+    private int bookId;
     private int numberOfCopies; 
     private int numberPages;
     private int price;
@@ -20,12 +23,14 @@ public class Book {
         this.nameBook = nameBook;
         this.authorBook = authorBook;
         this.dateOfPublication = dateOfPublication;
-        this.numberOfCopies = numberOfCopies;
+        setNumberOfCopies(numberOfCopies);
         this.availability = numberOfCopies > 0;         /* Определяем наличие книги, в зависимости от кол-ва экземпляров*/
         this.numberPages = numberPages;
-        this.price = price;
+        setPrice(price);
         this.dateAddedToWarehouse = dateAddedToWarehouse;
-        this.numberOfRequests = 0;                      /* Изначально кол-во запросов равно нулю */  
+        this.numberOfRequests = 0;                      /* Изначально кол-во запросов равно нулю */
+        this.bookId = bookIdCounter++; 
+
 
     }
 
@@ -40,23 +45,12 @@ public class Book {
 
     }
 
-    /* Вывод информации */
-    public void printInfo() {
+    /* Геттеры */
 
-        System.out.println("Название: " + nameBook);
-        System.out.println("Автор: " + authorBook);
-        System.out.println("Дата публикации: " + dateOfPublication);
-        System.out.println("Страниц: " + numberPages);
-        System.out.println("Цена: " + price);
-        System.out.println("Количество: " + numberOfCopies);
-        System.out.println("В наличии: " + availability);
-        System.out.println("Дата поступления на склад: " + dateAddedToWarehouse);
-        System.out.println("Количество запросов на книгу: " + numberOfRequests);
-
+    public int getId() {
+        return this.bookId;
     }
 
-
-    /* Геттеры и сеттеры */
     public String getNameBook() {
         return this.nameBook;
     }
@@ -85,16 +79,6 @@ public class Book {
         return this.availability;
     }
 
-    public void setPrice(int price) {
-
-        /* Проверка на корректность значения цены */
-        if (price >= 0) {
-            this.price = price;
-        } else {
-            System.out.println("Ошибка! цена не может быть <= 0");
-        }
-    }
-
     public LocalDate getDateAddedToWarehouse() {
         return dateAddedToWarehouse;
     }
@@ -102,6 +86,8 @@ public class Book {
     public int getNumberOfRequests() {
         return numberOfRequests;
     }
+
+    /* Сеттеры */
 
     public void incrementRequests() {
         this.numberOfRequests++;
@@ -124,10 +110,18 @@ public class Book {
             this.numberOfCopies = numberOfCopies;
             this.availability = numberOfCopies > 0; /* Устанавливаем и наличие книги */
         } else {
-            System.out.println("Ошибка! кол-во экземпляров не может быть <= 0");
+            throw new IllegalArgumentException();
         }
     }
 
+    public void setPrice(int price) {
 
+        /* Проверка на корректность значения цены */
+        if (price >= 0) {
+            this.price = price;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
 
 }

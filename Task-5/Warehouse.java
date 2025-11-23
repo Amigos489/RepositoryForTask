@@ -1,25 +1,23 @@
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.ArrayList;
 
 class Warehouse {
 
     private int currentCapacity; 
     private int maximumCapacity;
-    private LinkedList<Book> listBook;
+    private ArrayList<Book> listBook;
 
     /* Конструктор по умолчанию */
     Warehouse() {
         this.currentCapacity = 0;
         this.maximumCapacity = 100;
-        listBook = new LinkedList<>();
+        listBook = new ArrayList<>();
     }
 
     /* Конструктор со всеми параметрами */
     Warehouse(int currentCapacity, int maximumCapacity) {
         this.currentCapacity = currentCapacity;
         this.maximumCapacity = maximumCapacity;
-        listBook = new LinkedList<>();
+        listBook = new ArrayList<>();
     }
 
     /* Добавление книги на склад */
@@ -31,6 +29,9 @@ class Warehouse {
 
         if (book.getNumberOfCopies() > availableSpace) {
             book.setNumberOfCopies(availableSpace);
+            listBook.add(book);
+            this.currentCapacity += availableSpace;
+            book.setAvailability(true);
             return StatusAddBook.ONLYPART;
         }
 
@@ -43,7 +44,7 @@ class Warehouse {
     /* Списание книги со склада */
     public boolean writeFromWarehouse(String nameBook) {
         for (Book book : listBook) {
-            if (book.getNameBook().equalsIgnoreCase(nameBook)) {
+            if (book.getNameBook().equalsIgnoreCase(nameBook.trim())) {
                 this.currentCapacity -= book.getNumberOfCopies();
                 book.setNumberOfCopies(0);
                 book.setAvailability(false);
@@ -54,8 +55,8 @@ class Warehouse {
     }
 
     /* Получить список залежавшихся книг */
-    public LinkedList<Book> getStaleBooks() {
-        LinkedList<Book> stale = new LinkedList<>();
+    public ArrayList<Book> getStaleBooks() {
+        ArrayList<Book> stale = new ArrayList<>();
 
         for (Book book : listBook) {
             // Проверяем, что книга есть на складе и не продана больше 6 месяцев
@@ -70,13 +71,22 @@ class Warehouse {
     /* Поиск книги по названию */
     public Book findBookByName(String nameBook) {
         for (Book book : listBook) {
-            if (book.getNameBook().equalsIgnoreCase(nameBook)) {
+            if (book.getNameBook().equalsIgnoreCase(nameBook.trim())) {
                 return book;
             }
         }
         return null;
     }
 
+    /* Поиск книги по названию */
+    public Book findBookByID(int ID) {
+        for (Book book : listBook) {
+            if (book.getId() == ID) {
+                return book;
+            }
+        }
+        return null;
+    }
 
     /* Геттеры и сеттеры */
     public int getCurrentCapacity() {
@@ -87,10 +97,9 @@ class Warehouse {
         return this.maximumCapacity;
     }
 
-    public List<Book> getListBooks() {
-        return listBook;
+    public ArrayList<Book> getListBooks() {
+        return this.listBook;
     }
-
 
     public boolean setCurrentCapacity(int newValue) {
         if (newValue <= this.maximumCapacity && newValue >= 0) {
