@@ -1,5 +1,6 @@
 /* Класс меню клиента */
 
+
 public class ClientMenu implements Menu {
 
     @Override

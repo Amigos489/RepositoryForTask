@@ -12,7 +12,9 @@ public class Order {
     private OrderStatus orderStatus;
     private LocalDate dateOfExecution;
     private Book book;
-    private ArrayList<BookRequest> listRequest;      
+    private ArrayList<BookRequest> listRequest; 
+    
+    public Order() {}
 
     /* Конструктор */
     public Order(Book book, String customerEmail) {

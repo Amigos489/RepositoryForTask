@@ -1,0 +1,3 @@
+#Config file
+cntMountStale = 6
+possibilityMarkComplected = true

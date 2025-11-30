@@ -1,25 +1,30 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 class Warehouse {
 
     private int currentCapacity; 
     private int maximumCapacity;
+    private int cntMountStale;
     private ArrayList<Book> listBook;
 
     /* Конструктор по умолчанию */
     Warehouse() {
         this.currentCapacity = 0;
         this.maximumCapacity = 100;
+        this.cntMountStale = 6;
         listBook = new ArrayList<>();
     }
 
     /* Конструктор со всеми параметрами */
-    Warehouse(int currentCapacity, int maximumCapacity) {
+    Warehouse(int currentCapacity, int maximumCapacity, int cntMountStale) {
         this.currentCapacity = currentCapacity;
         this.maximumCapacity = maximumCapacity;
+        this.cntMountStale = cntMountStale;
         listBook = new ArrayList<>();
     }
 
+    
     /* Добавление книги на склад */
     public StatusAddBook addToWarehouse(Book book) {
         int availableSpace = this.maximumCapacity - this.currentCapacity;
@@ -60,7 +65,7 @@ class Warehouse {
 
         for (Book book : listBook) {
             // Проверяем, что книга есть на складе и не продана больше 6 месяцев
-            if (book.isStale()) {
+            if (book.getDateAddedToWarehouse().isBefore(LocalDate.now().minusMonths(cntMountStale)) && book.getNumberOfCopies() > 0) {
                 stale.add(book);
             }
         }
@@ -81,7 +86,7 @@ class Warehouse {
     /* Поиск книги по названию */
     public Book findBookByID(int ID) {
         for (Book book : listBook) {
-            if (book.getId() == ID) {
+            if (book.getBookId() == ID) {
                 return book;
             }
         }
@@ -108,6 +113,10 @@ class Warehouse {
         } else {
             return false;
         }
+    }
+
+    public void setListBooks(ArrayList<Book> books) {
+        this.listBook = books;
     }
 
 }

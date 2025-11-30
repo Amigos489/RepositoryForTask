@@ -5,11 +5,16 @@ public class OrderManagement {
 
     private ArrayList<Order> listOrder; 
     private ArrayList<BookRequest> listRequests;
+    private boolean possibilityMarkComplected;
+
+    /* Пустой конструктор */
+    public OrderManagement() { }
 
     /* Конструктор */
-    public OrderManagement() {
+    public OrderManagement(boolean possibilityMarkComplected) {
         listOrder = new ArrayList<>();
         listRequests = new ArrayList<>();
+        this.possibilityMarkComplected = possibilityMarkComplected;
     }
 
     /* Создание заказа */
@@ -59,9 +64,11 @@ public class OrderManagement {
     public void receiveBookOnWarehouse(Book book) {
         book.setAvailability(true);
 
-        for (BookRequest request : listRequests) {
-            if (request.getBook().equals(book) && !request.isFulfilled()) {
-                request.fulfillRequest();
+        if (possibilityMarkComplected) {
+            for (BookRequest request : listRequests) {
+                if (request.getBook().equals(book) && !request.isFulfilled()) {
+                    request.fulfillRequest();
+                }
             }
         }
 
@@ -148,5 +155,14 @@ public class OrderManagement {
 
     public ArrayList<BookRequest> getAllBookRequests() {
         return this.listRequests;
+    }
+
+    /* Сеттеры */
+    public void setAllOrders(ArrayList<Order> orders) {
+        this.listOrder = orders;
+    }
+
+    public void setBookRequests(ArrayList<BookRequest> listRequests) {
+        this.listRequests = listRequests;
     }
 }
