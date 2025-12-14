@@ -1,6 +1,6 @@
 import java.util.Comparator;
 
-public class SortedOrderByPriceOrder implements Comparator<Order>{
+public class SortedOrderByPrice implements Comparator<Order>{
 
     @Override
     public int compare(Order order1, Order order2) {
