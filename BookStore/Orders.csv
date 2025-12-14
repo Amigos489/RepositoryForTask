@@ -1,0 +1,5 @@
+orderID,customerEmail,priceOrder,orderStatus,dateOfExecution,bookId,bookTitle
+1,"Dima1234",120,NEW,2025-12-21,1,"Book1"
+2,"Dima1234",5000,NEW,2025-12-21,2,"Book2"
+3,"Dima1234",560,WAITING,2025-12-21,3,"Book3"
+4,"Dima1234",560,WAITING,2025-12-21,3,"Book3"
