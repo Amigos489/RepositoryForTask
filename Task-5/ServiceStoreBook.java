@@ -1,16 +1,47 @@
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class ServiceStoreBook {
 
+
     private Warehouse warehouse;
     private OrderManagement orderManagement;
+    private JsonStorage jsonStorage;
 
-    public ServiceStoreBook(Warehouse warehouse) {
+    public ServiceStoreBook(Warehouse warehouse, OrderManagement orderManagement, JsonStorage jsonStorage) {
         this.warehouse = warehouse;
-        this.orderManagement = new OrderManagement();
+        this.orderManagement = orderManagement;
+        this.jsonStorage = jsonStorage;
 
+    }
+
+    public void saveAll() {
+        StoreData data = new StoreData();
+        data.setBooks(warehouse.getListBooks());
+        data.setOrders(orderManagement.getAllOrders());
+        data.setRequests(orderManagement.getAllBookRequests());
+
+        try {
+            jsonStorage.save(data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Загрузка всего состояния
+    public void loadAll() {
+        try {
+            StoreData data = jsonStorage.load(StoreData.class);
+            if (data != null) {
+                warehouse.setListBooks(data.getBooks());
+                orderManagement.setAllOrders(data.getOrders());
+                orderManagement.setBookRequests(data.getRequests());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     /* Сортировка книг */

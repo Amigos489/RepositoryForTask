@@ -5,15 +5,17 @@ public class BookRequest {
 
     private static int bookRequestIdCounter = 1; 
     
-    private int bookRequestId;
+    private int id;
     private Book book;            
     private int requestCount;     
     private LocalDate requestDate; 
     private boolean fulfilled; 
 
+    public BookRequest() {}
+
     /* Конструктор */
     public BookRequest(Book book) {
-        this.bookRequestId = bookRequestIdCounter++;
+        this.id = bookRequestIdCounter++;
         this.book = book;
         this.requestCount = 1;
         this.requestDate = LocalDate.now();
@@ -33,7 +35,7 @@ public class BookRequest {
     /* Геттеры */
 
     public int getId() {
-        return this.bookRequestId;
+        return this.id;
     }
 
     public Book getBook() {

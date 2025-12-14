@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /* Класс книги */
 public class Book {
@@ -9,12 +10,16 @@ public class Book {
     private String authorBook;
     private LocalDate dateOfPublication;
     private LocalDate dateAddedToWarehouse;
+    @JsonProperty("id")
     private int bookId;
     private int numberOfCopies; 
     private int numberPages;
     private int price;
     private int numberOfRequests;
     private boolean availability;
+
+    /* Пустой конструктор */
+    public Book() {}
 
     /* Конструктор */
     public Book(String nameBook, String authorBook, LocalDate dateOfPublication,
@@ -30,24 +35,11 @@ public class Book {
         this.dateAddedToWarehouse = dateAddedToWarehouse;
         this.numberOfRequests = 0;                      /* Изначально кол-во запросов равно нулю */
         this.bookId = bookIdCounter++; 
-
-
-    }
-
-    /* Проверка залежавшейся книги*/
-    public boolean isStale() {
-        if (dateAddedToWarehouse.isBefore(LocalDate.now().minusMonths(6)) 
-                && numberOfCopies > 0) {
-            return true;
-        } else {
-            return false;
-        }
-
     }
 
     /* Геттеры */
 
-    public int getId() {
+    public int getBookId() {
         return this.bookId;
     }
 
