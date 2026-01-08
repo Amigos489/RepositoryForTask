@@ -1,11 +1,13 @@
 import java.time.LocalTime;
 
-public class SystemTimeThread extends Thread{
+public class SystemTimeDemonThread extends Thread{
 
-    private int n;
+    private int intervalTellsTime;
+    private final int cntSecondsPerMinute = 1000;
   
-    SystemTimeThread(int n) {
-        this.n = n;
+    SystemTimeDemonThread(int intervalTellsTime) {
+        this.intervalTellsTime = intervalTellsTime;
+        setDaemon(true);
     }
     
     @Override
@@ -17,12 +19,16 @@ public class SystemTimeThread extends Thread{
                 System.out.print(time.getHour() + ":");
                 System.out.print(time.getMinute() + ":");
                 System.out.println(time.getSecond());
-                sleep(1000 * n);
+                sleep(cntSecondsPerMinute * intervalTellsTime);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
         }
+    }
+
+    public int getIntervalTellsTime() {
+        return intervalTellsTime;
     }
 
 }

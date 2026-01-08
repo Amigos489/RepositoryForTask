@@ -1,23 +1,31 @@
 public class MyThread extends Thread {
 
-    private final int num;
+    private final int numThread;
+    private final Object lock;
 
-    MyThread(int num) {
-        this.num = num;
+    MyThread(int numThread, Object lock) {
+        this.numThread = numThread;
+        this.lock = lock;
     }
 
     @Override
     public void run() {
-        System.out.println("Привет! Я поток с номером " + num);
-        try {
-            sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        while(true) {
+            synchronized(lock) {
+                System.out.println("Привет! Я поток с номером " + numThread);
+                try {
+                    sleep(500);
+                    lock.notify();
+                    lock.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
-    public int getNum() {
-        return num;
+    public int getNumThread() {
+        return numThread;
     }
 
 }
