@@ -1,0 +1,43 @@
+CREATE TABLE IF NOT EXISTS Product (
+	maker VARCHAR(10),
+	model VARCHAR(50) PRIMARY KEY,
+	type VARCHAR(50)
+);
+
+CREATE TABLE IF NOT EXISTS PC (
+	code SERIAL PRIMARY KEY,
+	model VARCHAR(50),
+	FOREIGN KEY (model) REFERENCES Product (model),
+	speed SMALLINT,
+	ram SMALLINT,
+	hd REAL,
+	cd VARCHAR(10),
+	price MONEY
+);
+
+CREATE TABLE IF NOT EXISTS Laptop (
+	code SERIAL PRIMARY KEY,
+	model VARCHAR(50),
+	FOREIGN KEY (model) REFERENCES Product (model),
+	speed SMALLINT,
+	ram SMALLINT,
+	hd REAL,
+	screen SMALLINT,
+	price MONEY
+);
+
+
+CREATE TABLE IF NOT EXISTS Printer (
+	code SERIAL PRIMARY KEY,
+	model VARCHAR(50),
+	FOREIGN KEY (model) REFERENCES Product (model),
+	color CHAR(1),
+	type VARCHAR(10),
+	price MONEY
+);
+
+DROP TABLE Product;
+DROP TABLE PC;
+DROP TABLE Laptop;
+DROP TABLE Printer;
+
