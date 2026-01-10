@@ -1,8 +1,11 @@
 public class ImportExportMenuController extends MenuController {
 
+    @Inject
     private ServiceStoreBook serviceStoreBook;
 
-    ImportExportMenuController(ServiceStoreBook serviceStoreBook) {
+    public ImportExportMenuController() {}
+
+    public ImportExportMenuController(ServiceStoreBook serviceStoreBook) {
         this.serviceStoreBook = serviceStoreBook;
     }
 

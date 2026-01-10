@@ -116,7 +116,19 @@ public class Book implements Exportable {
 
     public void setBookID(int id) {
         this.bookId = id;
+        if (id >= bookIdCounter) {
+            bookIdCounter = id + 1;
+        }
     }
+
+    public static int getBookIdCounter() {
+        return bookIdCounter;
+    }
+
+    public static void setBookIdCounter(int value) {
+        bookIdCounter = value;
+    }
+
 
     /* Методы для экспорта */
 

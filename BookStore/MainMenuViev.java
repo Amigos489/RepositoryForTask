@@ -1,17 +1,15 @@
 public class MainMenuViev extends MenuView {
 
+    @Inject
     private MainMenuController mainMenuController; /* Контроллер главного меню */
+    @Inject
     private ClientMenuView clientMenuView;
+    @Inject
     private LibrarianMenuView librarianMenuViev;
+    @Inject
     private ImportExportMenuViev importExportMenuViev;
-    
 
-    public MainMenuViev(MainMenuController mainMenuController, ClientMenuView clientMenuView, LibrarianMenuView librarianMenuView, ImportExportMenuViev importExportMenuViev) {
-        this.mainMenuController = mainMenuController;
-        this.clientMenuView = clientMenuView;
-        this.librarianMenuViev = librarianMenuView;
-        this.importExportMenuViev = importExportMenuViev;
-    }
+    public MainMenuViev() {}
 
     @Override
     public void showMenu() {

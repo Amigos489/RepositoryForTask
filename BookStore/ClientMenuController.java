@@ -2,11 +2,10 @@ import java.util.ArrayList;
 
 public class ClientMenuController extends MenuController {
 
+    @Inject
     private ServiceStoreBook serviceStoreBook;
 
-    ClientMenuController(ServiceStoreBook serviceStoreBook) {
-        this.serviceStoreBook = serviceStoreBook;
-    }
+    ClientMenuController() {}
 
     public StatusClientMenu start() {
 
