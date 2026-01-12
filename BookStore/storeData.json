@@ -1,0 +1,128 @@
+{
+  "books" : [ {
+    "nameBook" : "Book1",
+    "authorBook" : "Name1",
+    "dateOfPublication" : [ 1999, 12, 12 ],
+    "dateAddedToWarehouse" : [ 2025, 12, 14 ],
+    "bookId" : 1,
+    "numberOfCopies" : 120,
+    "numberPages" : 120,
+    "price" : 120,
+    "numberOfRequests" : 0,
+    "availability" : true
+  }, {
+    "nameBook" : "Book2",
+    "authorBook" : "Name2",
+    "dateOfPublication" : [ 2000, 12, 7 ],
+    "dateAddedToWarehouse" : [ 2025, 12, 14 ],
+    "bookId" : 2,
+    "numberOfCopies" : 20,
+    "numberPages" : 1200,
+    "price" : 5000,
+    "numberOfRequests" : 0,
+    "availability" : true
+  }, {
+    "nameBook" : "Book3",
+    "authorBook" : "Name3",
+    "dateOfPublication" : [ 2000, 12, 12 ],
+    "dateAddedToWarehouse" : [ 2025, 12, 14 ],
+    "bookId" : 3,
+    "numberOfCopies" : 0,
+    "numberPages" : 230,
+    "price" : 560,
+    "numberOfRequests" : 0,
+    "availability" : false
+  } ],
+  "orders" : [ {
+    "orderID" : 1,
+    "priceOrder" : 120,
+    "customerEmail" : "Dima1234",
+    "orderStatus" : "NEW",
+    "dateOfExecution" : [ 2025, 12, 21 ],
+    "book" : {
+      "nameBook" : "Book1",
+      "authorBook" : "Name1",
+      "dateOfPublication" : [ 1999, 12, 12 ],
+      "dateAddedToWarehouse" : [ 2025, 12, 14 ],
+      "bookId" : 1,
+      "numberOfCopies" : 120,
+      "numberPages" : 120,
+      "price" : 120,
+      "numberOfRequests" : 0,
+      "availability" : true
+    },
+    "listRequest" : [ ]
+  }, {
+    "orderID" : 3,
+    "priceOrder" : 560,
+    "customerEmail" : "Dima1234",
+    "orderStatus" : "WAITING",
+    "dateOfExecution" : [ 2025, 12, 21 ],
+    "book" : {
+      "nameBook" : "Book3",
+      "authorBook" : "Name3",
+      "dateOfPublication" : [ 2000, 12, 12 ],
+      "dateAddedToWarehouse" : [ 2025, 12, 14 ],
+      "bookId" : 3,
+      "numberOfCopies" : 0,
+      "numberPages" : 230,
+      "price" : 560,
+      "numberOfRequests" : 0,
+      "availability" : true
+    },
+    "listRequest" : [ ]
+  }, {
+    "orderID" : 4,
+    "priceOrder" : 560,
+    "customerEmail" : "Dima1234",
+    "orderStatus" : "WAITING",
+    "dateOfExecution" : [ 2025, 12, 21 ],
+    "book" : {
+      "nameBook" : "Book3",
+      "authorBook" : "Name3",
+      "dateOfPublication" : [ 2000, 12, 12 ],
+      "dateAddedToWarehouse" : [ 2025, 12, 14 ],
+      "bookId" : 3,
+      "numberOfCopies" : 0,
+      "numberPages" : 230,
+      "price" : 560,
+      "numberOfRequests" : 0,
+      "availability" : true
+    },
+    "listRequest" : [ ]
+  }, {
+    "orderID" : 2,
+    "priceOrder" : 5000,
+    "customerEmail" : "Dima1234",
+    "orderStatus" : "NEW",
+    "dateOfExecution" : [ 2025, 12, 21 ],
+    "book" : {
+      "nameBook" : "Book2",
+      "authorBook" : "Name2",
+      "dateOfPublication" : [ 2000, 12, 7 ],
+      "dateAddedToWarehouse" : [ 2025, 12, 14 ],
+      "bookId" : 2,
+      "numberOfCopies" : 20,
+      "numberPages" : 1200,
+      "price" : 5000,
+      "numberOfRequests" : 0,
+      "availability" : true
+    },
+    "listRequest" : [ ]
+  } ],
+  "requests" : [ {
+    "id" : 1,
+    "bookId" : 3,
+    "bookName" : "Book3",
+    "requestCount" : 1,
+    "requestDate" : [ 2025, 12, 14 ],
+    "fulfilled" : false
+  }, {
+    "id" : 2,
+    "bookId" : 3,
+    "bookName" : "Book3",
+    "requestCount" : 1,
+    "requestDate" : [ 2025, 12, 14 ],
+    "fulfilled" : false
+  } ]
+}

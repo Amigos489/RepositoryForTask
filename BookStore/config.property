@@ -1,0 +1,3 @@
+#Config file
+AppConfig.cntMountStale=6
+AppConfig.possibilityMarkComplected=true
