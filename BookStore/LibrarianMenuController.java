@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -124,7 +125,7 @@ public class LibrarianMenuController extends MenuController {
         }
     }
 
-    public int getProfit(LocalDate startDate, LocalDate endDate) {
+    public BigDecimal getProfit(LocalDate startDate, LocalDate endDate) {
         return serviceStoreBook.getOrderManagement().getRevenue(startDate, endDate);
     }
 

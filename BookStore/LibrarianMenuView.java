@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -169,7 +170,7 @@ public class LibrarianMenuView extends MenuView {
         System.out.println("1. по дате поступления.");
         System.out.println("2. по цене.");
         System.out.print("Выбор: ");
-        librarianMenuController.sortedCriterionStaleBook();
+        BookView.printBooks(librarianMenuController.sortedCriterionStaleBook());
     }
 
     public void printProfit() {
@@ -185,7 +186,7 @@ public class LibrarianMenuView extends MenuView {
             super.printErrorMessage("Введена некорректная дата.");
             return;
         }
-        int profit = librarianMenuController.getProfit(startDate, endDate);
+        BigDecimal profit = librarianMenuController.getProfit(startDate, endDate);
         System.out.println("Прибыль с " + startDate + " по " + endDate + " составляет: " + profit);
     }
 

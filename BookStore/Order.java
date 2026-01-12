@@ -1,30 +1,34 @@
+import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;;
 
 /* Класс заказа */
 public class Order implements Exportable{
 
-    private static int nextOrderID = 1;   
-
     private int orderID;
-    private int priceOrder;
+    private BigDecimal priceOrder;
     private String customerEmail;
     private OrderStatus orderStatus;
     private LocalDate dateOfExecution;
     private Book book;
-    private ArrayList<BookRequest> listRequest; 
+    private int bookID;
     
     public Order() {}
 
     /* Конструктор */
     public Order(Book book, String customerEmail) {
-        this.orderID = nextOrderID++;
         this.book = book;
+        this.bookID = book.getBookID();
         this.priceOrder = book.getPrice();
         this.customerEmail = customerEmail;
         this.orderStatus = OrderStatus.NEW;
         this.dateOfExecution = LocalDate.now().plusDays(7);     /* дата исполнения = текущая дата + 7 дней */
-        this.listRequest = new ArrayList<>();
+    }
+
+    public Order(String customerEmail, LocalDate dateOfExecution, Integer bookID, OrderStatus orderStatus) {
+        this.customerEmail = customerEmail;
+        this.dateOfExecution = dateOfExecution;
+        this.bookID = bookID;
+        this.orderStatus = orderStatus;
     }
 
     /* Геттеры */
@@ -32,7 +36,7 @@ public class Order implements Exportable{
         return orderID;
     }
 
-    public int getPriceOrder() {
+    public BigDecimal getPriceOrder() {
         return priceOrder;
     }
 
@@ -48,8 +52,8 @@ public class Order implements Exportable{
         return book;
     }
 
-    public ArrayList<BookRequest> getListRequest() {
-        return listRequest;
+    public int getBookID() {
+        return bookID;
     }
 
     public String getCustomerEmail() {
@@ -57,22 +61,6 @@ public class Order implements Exportable{
     }
 
     /* Сеттеры */
-
-    public void setID(int ID) {
-        if(ID > 0) {
-            this.orderID = ID;
-        } else {
-            throw new IllegalArgumentException();
-        }
-    }
-
-    public void setPriceOrder(int priceOrder) {
-        if (priceOrder > 0) {
-            this.priceOrder = priceOrder;
-        } else {
-            throw new IllegalArgumentException();
-        }
-    }
 
     public void setOrderStatus(OrderStatus orderStatus) {
 
@@ -90,6 +78,12 @@ public class Order implements Exportable{
         this.orderID = orderID;
     }
 
+    public void setPriceOrder(BigDecimal price) {
+        this.priceOrder = price;
+    }
+
+    
+
     @Override
     public String generateStringHeader() {
         return "orderID,customerEmail,priceOrder,orderStatus,dateOfExecution,bookId,bookTitle";
@@ -98,6 +92,6 @@ public class Order implements Exportable{
     @Override
     public String generateStringInfo() {
         return (this.getOrderID() + "," + "\"" + this.getCustomerEmail() + "\"," + this.getPriceOrder() + "," + this.getOrderStatus() + "," +
-            this.getDateOfExecution() + "," + this.getBook().getBookId() + "," + "\"" + this.getBook().getNameBook() + "\"");
+            this.getDateOfExecution() + "," + this.getBookID() + "," + "\"" + this.getBook().getNameBook() + "\"");
     }
 }

@@ -1,5 +1,3 @@
-import java.time.LocalDate;
-
 /* Класс для работы с запросами */
 public class BookRequest implements Exportable {
 
@@ -9,18 +7,22 @@ public class BookRequest implements Exportable {
     private int bookId;
     private String bookName;            
     private int requestCount;     
-    private LocalDate requestDate; 
     private boolean fulfilled; 
 
     public BookRequest() {}
 
+    public BookRequest(Integer bookID, Integer requestCount, boolean fulfilled) {
+        this.bookId = bookID;
+        this.requestCount = requestCount;
+        this.fulfilled = fulfilled;
+    }
+
     /* Конструктор */
     public BookRequest(Book book) {
         this.id = bookRequestIdCounter++;
-        this.bookId = book.getBookId();
+        this.bookId = book.getBookID();
         this.bookName = book.getNameBook();
         this.requestCount = 1;
-        this.requestDate = LocalDate.now();
         this.fulfilled = false;
     }
 
@@ -48,10 +50,6 @@ public class BookRequest implements Exportable {
         return this.requestCount;
     }
 
-    public LocalDate getRequestDate() {
-        return this.requestDate;
-    }
-
     public boolean isFulfilled() {
         return this.fulfilled;
     }
@@ -66,10 +64,6 @@ public class BookRequest implements Exportable {
 
     public void setRequestCount(int requestCount) {
         this.requestCount = requestCount;
-    }
-
-    public void setRequestDate(LocalDate requestDate) {
-        this.requestDate = requestDate;
     }
 
     public void setFulfilled(boolean fulfilled) {
@@ -92,13 +86,13 @@ public class BookRequest implements Exportable {
     /* Методы для работы с экспортом*/
     @Override
     public String generateStringHeader() {
-        return "id,bookId,bookName,requestCount,requestDate,fulfilled";
+        return "id,bookId,bookName,requestCount,fulfilled";
     }
 
     @Override
     public String generateStringInfo() {
         return id + "," + bookId + "," + "\"" + bookName + "\"," +
-       requestCount + "," + requestDate + "," + fulfilled;
+       requestCount + "," + fulfilled;
 
     }
     

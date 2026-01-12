@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class ServiceStoreBook {
+public class ServiceStoreBookDB {
 
     @Inject
     private Warehouse warehouse;
@@ -11,10 +11,16 @@ public class ServiceStoreBook {
     private OrderManagement orderManagement;
     @Inject
     private JsonStorage jsonStorage;
+    @Inject
+    private BooksDAO booksDAO;
+    @Inject
+    private OrdersDAO ordersDAO;
+    @Inject
+    private BookRequestDAO bookRequestDAO;
 
-    public ServiceStoreBook() {}
+    public ServiceStoreBookDB() {}
 
-    public ServiceStoreBook(Warehouse warehouse, OrderManagement orderManagement, JsonStorage jsonStorage) {
+    public ServiceStoreBookDB(Warehouse warehouse, OrderManagement orderManagement, JsonStorage jsonStorage) {
         this.warehouse = warehouse;
         this.orderManagement = orderManagement;
         this.jsonStorage = jsonStorage;

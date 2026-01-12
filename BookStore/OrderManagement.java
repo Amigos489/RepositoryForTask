@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.util.List;
+import java.math.BigDecimal;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class OrderManagement {
@@ -6,54 +9,79 @@ public class OrderManagement {
     private ArrayList<Order> listOrder;
     private ArrayList<BookRequest> listRequests;
     private boolean possibilityMarkComplected;
+    @Inject
+    private OrdersDAO ordersDAO;
+    @Inject
+    private BookRequestDAO bookRequestDAO;
+    @Inject
+    private BooksDAO bookDAO;
 
-    /* Пустой конструктор */
-    public OrderManagement() { }
+    /* Конструктор по умолчанию */
+    public OrderManagement() { 
+        this.possibilityMarkComplected = true;
+    }
+
+    public void initFromDAO() {
+        this.listOrder = new ArrayList<>(ordersDAO.getAll());
+        this.listRequests = new ArrayList<>(bookRequestDAO.getAll());
+    }
 
     /* Конструктор */
     public OrderManagement(boolean possibilityMarkComplected) {
-        listOrder = new ArrayList<>();
-        listRequests = new ArrayList<>();
+        listOrder = (ArrayList<Order>)ordersDAO.getAll();
+        listRequests = (ArrayList<BookRequest>)bookRequestDAO.getAll();
         this.possibilityMarkComplected = possibilityMarkComplected;
     }
 
     /* Создание заказа */
     public StatusCreateOrder createOrderOnBook(Book book, String customerEmail) {
-
-        Order order = new Order(book, customerEmail);
-        if (book.getAvailability()) {
-            listOrder.add(order);
-            return StatusCreateOrder.SUCCESSFULLY;
-        } else {
-            BookRequest request = new BookRequest(book); /* Создаём запрос на книгу */
-            listRequests.add(request);
-            order.getListRequest().add(request);
-            order.setOrderStatus(OrderStatus.WAITING);
-            listOrder.add(order);
+        try {
+            ordersDAO.accomplishmentTransaction(OperationTransaction.START);
+            Order order = new Order(book, customerEmail);
+            order.setPriceOrder(book.getPrice());
+            if (book.getAvailability()) {
+                ordersDAO.save(order);                                      //Сохраняем в бд
+                listOrder.add(order);
+                ordersDAO.accomplishmentTransaction(OperationTransaction.COMMIT);
+                ordersDAO.accomplishmentTransaction(OperationTransaction.END);
+                return StatusCreateOrder.SUCCESSFULLY;
+            } else {
+                BookRequest request = new BookRequest(book); /* Создаём запрос на книгу */
+                bookRequestDAO.save(request);                               //Сохраняем в бд
+                listRequests.add(request);
+                order.setOrderStatus(OrderStatus.WAITING);
+                ordersDAO.save(order);                                      //Сохраняем в бд
+                listOrder.add(order);
+                ordersDAO.accomplishmentTransaction(OperationTransaction.COMMIT);
+                ordersDAO.accomplishmentTransaction(OperationTransaction.END);
+                return StatusCreateOrder.EXPECTATION;
+            }
+        } catch (SQLException e) {
+            ordersDAO.accomplishmentTransaction(OperationTransaction.ROLLBACK);
+            ordersDAO.accomplishmentTransaction(OperationTransaction.END);
             return StatusCreateOrder.EXPECTATION;
+        }
+    }
+
+    public void setPriceAllOrders() {
+        listOrder = (ArrayList<Order>) ordersDAO.getAll();
+        for (Order order : listOrder) {
+            order.setPriceOrder((bookDAO.getByID(order.getBookID())).getPrice());
         }
     }
 
 
     /* Отмена заказа */
     public boolean cancelOrderOnBook(int ID) {
-        Order orderToCancel = null;
-
-        /* Проверка, что заказ с таким ID есть */
-        for (Order order : listOrder) {
-            if (order.getOrderID() == ID) {
-                orderToCancel = order;
-                break;
-            }
-        }
-
-        if (orderToCancel == null) {
+        Order order = ordersDAO.getByID(ID);        
+        if (order == null) {
             return false;
         }
 
-        if (orderToCancel.getOrderStatus() == OrderStatus.NEW || 
-                orderToCancel.getOrderStatus() == OrderStatus.WAITING) {
-            orderToCancel.setOrderStatus(OrderStatus.CANCELLED);
+        if (order.getOrderStatus() == OrderStatus.NEW || 
+                order.getOrderStatus() == OrderStatus.WAITING) {
+            order.setOrderStatus(OrderStatus.CANCELLED);
+            ordersDAO.update(order);
             return true;
         } else {
             return false;
@@ -62,28 +90,47 @@ public class OrderManagement {
 
     /* Метод для поступления книги на склад и закрытия запросов */
     public void receiveBookOnWarehouse(Book book) {
-        book.setAvailability(true);
+        try {
+            bookDAO.accomplishmentTransaction(OperationTransaction.START);
+            book.setAvailability(true);
+            bookDAO.update(book);
 
-        if (possibilityMarkComplected) {
-            for (BookRequest request : listRequests) {
-                if (request.getBookName().equals(book.getNameBook()) && !request.isFulfilled()) {
-                    request.fulfillRequest();
+            List<BookRequest> requests = bookRequestDAO.getAll();
+            if (possibilityMarkComplected) {
+                for (BookRequest request : requests) {
+                    if (request.getBookId() == book.getBookID() && !request.isFulfilled()) {
+                        request.fulfillRequest();
+                        bookRequestDAO.update(request);
+                    }
                 }
             }
-        }
 
-        for (Order order : listOrder) {
-            if (order.getBook().equals(book) && order.getOrderStatus() == OrderStatus.WAITING) {
-                order.setOrderStatus(OrderStatus.NEW); 
+            List<Order> orders = ordersDAO.getAll();
+            for (Order order : orders) {
+                if (order.getBookID() == book.getBookID() && order.getOrderStatus() == OrderStatus.WAITING) {
+                    order.setOrderStatus(OrderStatus.NEW); 
+                    ordersDAO.update(order);
+                }
             }
+            bookDAO.accomplishmentTransaction(OperationTransaction.COMMIT);
+            bookDAO.accomplishmentTransaction(OperationTransaction.END);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            bookDAO.accomplishmentTransaction(OperationTransaction.ROLLBACK);
+            bookDAO.accomplishmentTransaction(OperationTransaction.END);
         }
     }
 
     /* Ручное добавление запроса на книгу */
     public void addBookRequest(Book book) {
-        BookRequest request = new BookRequest(book);
-        listRequests.add(request);
-        book.incrementRequests();
+        try {
+            BookRequest request = new BookRequest(book);
+            bookRequestDAO.save(request);
+            listRequests.add(request);
+            book.incrementRequests();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /* Получить все запросы на конкретную книгу */
@@ -98,15 +145,16 @@ public class OrderManagement {
     }
 
     /* Получить прибыль */
-    public int getRevenue(LocalDate start, LocalDate end) {  
-        int sum = 0;
+    public BigDecimal getRevenue(LocalDate start, LocalDate end) {  
+        BigDecimal sum = BigDecimal.ZERO;
 
-        for (Order order : listOrder) {
+        List<Order> orders = ordersDAO.getAll();
+        for (Order order : orders) {
             if (order.getOrderStatus() == OrderStatus.COMPLETED) {
                 LocalDate date = order.getDateOfExecution();
                 if ((date.isEqual(start) || date.isAfter(start)) &&
                     (date.isEqual(end) || date.isBefore(end))) {
-                    sum += order.getPriceOrder();
+                    sum = sum.add(order.getPriceOrder());
                 }
             }
         }
@@ -114,11 +162,12 @@ public class OrderManagement {
         return sum;
     }
 
-    /* Посмотреть кол - во выполненные заказы*/
+    /* Посмотреть кол - во выполненных заказов*/
     public int getCompletedOrdersCount(LocalDate start, LocalDate end) {
         int count = 0;
 
-        for (Order order : listOrder) {
+        List<Order> orders = ordersDAO.getAll();
+        for (Order order : orders) {
             if (order.getOrderStatus() == OrderStatus.COMPLETED) {
                 LocalDate date = order.getDateOfExecution();
                 if ((date.isEqual(start) || date.isAfter(start)) &&
@@ -135,7 +184,8 @@ public class OrderManagement {
     public ArrayList<Order> getCompletedOrders(LocalDate start, LocalDate end) {
     ArrayList<Order> completedOrders = new ArrayList<>();
 
-        for (Order order : listOrder) {
+        List<Order> orders = ordersDAO.getAll();
+        for (Order order : orders) {
             if (order.getOrderStatus() == OrderStatus.COMPLETED) {
                 LocalDate date = order.getDateOfExecution();
                 if ((date.isEqual(start) || date.isAfter(start)) &&

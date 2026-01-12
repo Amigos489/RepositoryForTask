@@ -17,9 +17,8 @@ public class BookRequestView {
     public static void printBookRequestInfo(BookRequest bookRequest) {
 
         System.out.println("ID запроса: " + bookRequest.getId());
-        System.out.println("Книга: " + bookRequest.getBookName());
+        System.out.println("ID книги: " + bookRequest.getBookId());
         System.out.println("Количество: " + bookRequest.getRequestCount());
-        System.out.println("Дата: " + bookRequest.getRequestDate());
         
     }
 

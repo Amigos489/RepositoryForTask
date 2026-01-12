@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -7,13 +8,18 @@ class Warehouse {
     private int maximumCapacity;
     private int cntMountStale;
     private ArrayList<Book> listBook;
+    @Inject
+    private BooksDAO booksDAO;
 
     /* Конструктор по умолчанию */
     Warehouse() {
         this.currentCapacity = 0;
         this.maximumCapacity = 100;
         this.cntMountStale = 6;
-        listBook = new ArrayList<>();
+    }
+
+    public void initFromDAO() {
+        this.listBook = new ArrayList<>(booksDAO.getAll());
     }
 
     /* Конструктор со всеми параметрами */
@@ -21,7 +27,6 @@ class Warehouse {
         this.currentCapacity = currentCapacity;
         this.maximumCapacity = maximumCapacity;
         this.cntMountStale = cntMountStale;
-        listBook = new ArrayList<>();
     }
 
     
@@ -31,51 +36,76 @@ class Warehouse {
         if (availableSpace <= 0) {
             return StatusAddBook.FAIL;
         }
-
-        if (book.getNumberOfCopies() > availableSpace) {
-            book.setNumberOfCopies(availableSpace);
-            listBook.add(book);
-            this.currentCapacity += availableSpace;
+        booksDAO.accomplishmentTransaction(OperationTransaction.START);
+        try {
+            if (book.getNumberOfCopies() > availableSpace) {
+                book.setNumberOfCopies(availableSpace);
+                this.currentCapacity += availableSpace;
+                book.setAvailability(true);
+                booksDAO.save(book);                                //Добавили книги в бд
+                booksDAO.accomplishmentTransaction(OperationTransaction.COMMIT);
+                listBook.add(book);
+                return StatusAddBook.ONLYPART;
+            }
+            this.currentCapacity += book.getNumberOfCopies();
             book.setAvailability(true);
-            return StatusAddBook.ONLYPART;
+            booksDAO.save(book);                                    //Добавили книги в бд
+            booksDAO.accomplishmentTransaction(OperationTransaction.COMMIT);
+            listBook.add(book);
+            return StatusAddBook.SUCCESSFULY;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            booksDAO.accomplishmentTransaction(OperationTransaction.ROLLBACK);
+            return StatusAddBook.FAIL;
+        } finally {
+            booksDAO.accomplishmentTransaction(OperationTransaction.END);
         }
-
-        listBook.add(book);
-        this.currentCapacity += book.getNumberOfCopies();
-        book.setAvailability(true);
-        return StatusAddBook.SUCCESSFULY;
     }
 
     /* Списание книги со склада */
     public boolean writeFromWarehouse(String nameBook) {
-        for (Book book : listBook) {
-            if (book.getNameBook().equalsIgnoreCase(nameBook.trim())) {
-                this.currentCapacity -= book.getNumberOfCopies();
-                book.setNumberOfCopies(0);
-                book.setAvailability(false);
-                return true; // книга успешно списана
+        try {
+            booksDAO.accomplishmentTransaction(OperationTransaction.START);
+            ArrayList<Book> books = (ArrayList<Book>) booksDAO.getAll();
+            for (Book book : books) {
+                if (book.getNameBook().equalsIgnoreCase(nameBook.trim())) {
+                    int numberOfCopies = book.getNumberOfCopies();
+                    book.setNumberOfCopies(0);
+                    book.setAvailability(false);
+                    this.currentCapacity -= numberOfCopies;
+                    booksDAO.update(book);
+                    booksDAO.accomplishmentTransaction(OperationTransaction.COMMIT);
+                    booksDAO.accomplishmentTransaction(OperationTransaction.END);
+                    return true; // книга успешно списана
+                }
             }
+            booksDAO.accomplishmentTransaction(OperationTransaction.END);
+            return false; // книга не найдена
+        } catch (SQLException e) {
+            booksDAO.accomplishmentTransaction(OperationTransaction.ROLLBACK);
+            booksDAO.accomplishmentTransaction(OperationTransaction.END);
+            return false; // книга не найдена
         }
-        return false; // книга не найдена
     }
 
     /* Получить список залежавшихся книг */
     public ArrayList<Book> getStaleBooks() {
         ArrayList<Book> stale = new ArrayList<>();
 
-        for (Book book : listBook) {
+        ArrayList<Book> books = (ArrayList<Book>)booksDAO.getAll();
+        for (Book book : books) {
             // Проверяем, что книга есть на складе и не продана больше 6 месяцев
             if (book.getDateAddedToWarehouse().isBefore(LocalDate.now().minusMonths(cntMountStale)) && book.getNumberOfCopies() > 0) {
                 stale.add(book);
             }
         }
-
         return stale;
     }
 
     /* Поиск книги по названию */
     public Book findBookByName(String nameBook) {
-        for (Book book : listBook) {
+        ArrayList<Book> books = (ArrayList<Book>) booksDAO.getAll();
+        for (Book book : books) {
             if (book.getNameBook().equalsIgnoreCase(nameBook.trim())) {
                 return book;
             }
@@ -83,14 +113,9 @@ class Warehouse {
         return null;
     }
 
-    /* Поиск книги по названию */
+    /* Поиск книги по id в базе данных */
     public Book findBookByID(int ID) {
-        for (Book book : listBook) {
-            if (book.getBookId() == ID) {
-                return book;
-            }
-        }
-        return null;
+        return booksDAO.getByID(ID);
     }
 
     /* Геттеры и сеттеры */
@@ -120,3 +145,4 @@ class Warehouse {
     }
 
 }
+
