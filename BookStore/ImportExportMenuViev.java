@@ -1,8 +1,11 @@
 public class ImportExportMenuViev extends MenuView {
     
+    @Inject
     ImportExportMenuController importExportMenuController;
 
-    ImportExportMenuViev(ImportExportMenuController importExportMenuController) {
+    public ImportExportMenuViev() {}
+
+    public ImportExportMenuViev(ImportExportMenuController importExportMenuController) {
         this.importExportMenuController = importExportMenuController;
     }
 

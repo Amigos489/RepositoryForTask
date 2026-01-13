@@ -4,11 +4,10 @@ import java.util.ArrayList;
 
 public class LibrarianMenuController extends MenuController {
 
+    @Inject
     private ServiceStoreBook serviceStoreBook;
 
-    LibrarianMenuController(ServiceStoreBook serviceStoreBook) {
-        this.serviceStoreBook = serviceStoreBook;
-    }
+    public LibrarianMenuController() {};
 
     public StatusLibrarianMenu start() {
 

@@ -5,10 +5,14 @@ import java.util.Collections;
 
 public class ServiceStoreBook {
 
-
+    @Inject
     private Warehouse warehouse;
+    @Inject
     private OrderManagement orderManagement;
+    @Inject
     private JsonStorage jsonStorage;
+
+    public ServiceStoreBook() {}
 
     public ServiceStoreBook(Warehouse warehouse, OrderManagement orderManagement, JsonStorage jsonStorage) {
         this.warehouse = warehouse;

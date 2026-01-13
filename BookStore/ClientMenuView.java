@@ -1,10 +1,9 @@
 public class ClientMenuView extends MenuView {
 
+    @Inject
     private ClientMenuController clientMenuController; /* Контроллер меню клиента */
 
-    public ClientMenuView(ClientMenuController clientMenuController) {
-        this.clientMenuController = clientMenuController;
-    }
+    public ClientMenuView() {}
 
     @Override
     public void showMenu() {

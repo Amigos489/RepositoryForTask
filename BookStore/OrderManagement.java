@@ -3,7 +3,7 @@ import java.time.LocalDate;
 
 public class OrderManagement {
 
-    private ArrayList<Order> listOrder; 
+    private ArrayList<Order> listOrder;
     private ArrayList<BookRequest> listRequests;
     private boolean possibilityMarkComplected;
 

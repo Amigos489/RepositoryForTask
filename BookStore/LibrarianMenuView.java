@@ -3,11 +3,10 @@ import java.util.ArrayList;
 
 public class LibrarianMenuView extends MenuView {
 
+    @Inject
     private LibrarianMenuController librarianMenuController; /* Контроллер меню библиотекаря */
 
-    public LibrarianMenuView(LibrarianMenuController librarianMenuController) {
-        this.librarianMenuController = librarianMenuController;
-    }
+    public LibrarianMenuView() {}
 
     @Override
     public void showMenu() {
