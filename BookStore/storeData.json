@@ -1,102 +1,626 @@
 {
   "books" : [ {
+    "bookID" : 1,
+    "nameBook" : "The Catcher in the Rye",
+    "authorBook" : "J.D. Salinger",
+    "dateOfPublication" : {
+      "year" : 1951,
+      "month" : "JULY",
+      "monthValue" : 7,
+      "dayOfMonth" : 16,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "MONDAY",
+      "leapYear" : false,
+      "dayOfYear" : 197,
+      "era" : "CE"
+    },
+    "dateAddedToWarehouse" : {
+      "year" : 2023,
+      "month" : "JANUARY",
+      "monthValue" : 1,
+      "dayOfMonth" : 15,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "SUNDAY",
+      "leapYear" : false,
+      "dayOfYear" : 15,
+      "era" : "CE"
+    },
+    "numberOfCopies" : 12,
+    "numberPages" : 277,
+    "numberOfRequests" : 5,
+    "price" : 15.99,
+    "availability" : true
+  }, {
     "bookID" : 2,
-    "nameBook" : "C# for beginner",
-    "authorBook" : "Shildt",
-    "dateOfPublication" : [ 2000, 1, 23 ],
-    "dateAddedToWarehouse" : [ 2026, 1, 10 ],
-    "numberOfCopies" : 40,
-    "numberPages" : 670,
-    "numberOfRequests" : 0,
-    "price" : 2000,
+    "nameBook" : "To Kill a Mockingbird",
+    "authorBook" : "Harper Lee",
+    "dateOfPublication" : {
+      "year" : 1960,
+      "month" : "JULY",
+      "monthValue" : 7,
+      "dayOfMonth" : 11,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "MONDAY",
+      "leapYear" : true,
+      "dayOfYear" : 193,
+      "era" : "CE"
+    },
+    "dateAddedToWarehouse" : {
+      "year" : 2022,
+      "month" : "NOVEMBER",
+      "monthValue" : 11,
+      "dayOfMonth" : 20,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "SUNDAY",
+      "leapYear" : false,
+      "dayOfYear" : 324,
+      "era" : "CE"
+    },
+    "numberOfCopies" : 8,
+    "numberPages" : 281,
+    "numberOfRequests" : 3,
+    "price" : 12.99,
     "availability" : true
   }, {
     "bookID" : 3,
-    "nameBook" : "Python for professional",
-    "authorBook" : "author3",
-    "dateOfPublication" : [ 2019, 2, 1 ],
-    "dateAddedToWarehouse" : [ 2026, 1, 10 ],
-    "numberOfCopies" : 50,
-    "numberPages" : 430,
-    "numberOfRequests" : 0,
-    "price" : 1200,
+    "nameBook" : "1984",
+    "authorBook" : "George Orwell",
+    "dateOfPublication" : {
+      "year" : 1949,
+      "month" : "JUNE",
+      "monthValue" : 6,
+      "dayOfMonth" : 8,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "WEDNESDAY",
+      "leapYear" : false,
+      "dayOfYear" : 159,
+      "era" : "CE"
+    },
+    "dateAddedToWarehouse" : {
+      "year" : 2022,
+      "month" : "OCTOBER",
+      "monthValue" : 10,
+      "dayOfMonth" : 5,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "WEDNESDAY",
+      "leapYear" : false,
+      "dayOfYear" : 278,
+      "era" : "CE"
+    },
+    "numberOfCopies" : 5,
+    "numberPages" : 328,
+    "numberOfRequests" : 8,
+    "price" : 18.50,
     "availability" : true
   }, {
-    "bookID" : 1,
-    "nameBook" : "Java",
-    "authorBook" : "author1",
-    "dateOfPublication" : [ 2025, 12, 1 ],
-    "dateAddedToWarehouse" : [ 2026, 1, 10 ],
+    "bookID" : 4,
+    "nameBook" : "Moby Dick",
+    "authorBook" : "Herman Melville",
+    "dateOfPublication" : {
+      "year" : 1851,
+      "month" : "OCTOBER",
+      "monthValue" : 10,
+      "dayOfMonth" : 18,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "SATURDAY",
+      "leapYear" : false,
+      "dayOfYear" : 291,
+      "era" : "CE"
+    },
+    "dateAddedToWarehouse" : {
+      "year" : 2023,
+      "month" : "FEBRUARY",
+      "monthValue" : 2,
+      "dayOfMonth" : 10,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "FRIDAY",
+      "leapYear" : false,
+      "dayOfYear" : 41,
+      "era" : "CE"
+    },
+    "numberOfCopies" : 3,
+    "numberPages" : 635,
+    "numberOfRequests" : 10,
+    "price" : 20.00,
+    "availability" : true
+  }, {
+    "bookID" : 5,
+    "nameBook" : "Pride and Prejudice",
+    "authorBook" : "Jane Austen",
+    "dateOfPublication" : {
+      "year" : 1813,
+      "month" : "JANUARY",
+      "monthValue" : 1,
+      "dayOfMonth" : 28,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "THURSDAY",
+      "leapYear" : false,
+      "dayOfYear" : 28,
+      "era" : "CE"
+    },
+    "dateAddedToWarehouse" : {
+      "year" : 2022,
+      "month" : "DECEMBER",
+      "monthValue" : 12,
+      "dayOfMonth" : 15,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "THURSDAY",
+      "leapYear" : false,
+      "dayOfYear" : 349,
+      "era" : "CE"
+    },
+    "numberOfCopies" : 6,
+    "numberPages" : 279,
+    "numberOfRequests" : 4,
+    "price" : 14.99,
+    "availability" : true
+  }, {
+    "bookID" : 6,
+    "nameBook" : "Python for Professional",
+    "authorBook" : "no Dima",
+    "dateOfPublication" : {
+      "year" : 2025,
+      "month" : "DECEMBER",
+      "monthValue" : 12,
+      "dayOfMonth" : 12,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "FRIDAY",
+      "leapYear" : false,
+      "dayOfYear" : 346,
+      "era" : "CE"
+    },
+    "dateAddedToWarehouse" : {
+      "year" : 2025,
+      "month" : "DECEMBER",
+      "monthValue" : 12,
+      "dayOfMonth" : 12,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "FRIDAY",
+      "leapYear" : false,
+      "dayOfYear" : 346,
+      "era" : "CE"
+    },
     "numberOfCopies" : 0,
+    "numberPages" : 340,
+    "numberOfRequests" : 0,
+    "price" : 10.00,
+    "availability" : false
+  }, {
+    "bookID" : 7,
+    "nameBook" : "Java Generics",
+    "authorBook" : "Name",
+    "dateOfPublication" : {
+      "year" : 2007,
+      "month" : "JANUARY",
+      "monthValue" : 1,
+      "dayOfMonth" : 15,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "MONDAY",
+      "leapYear" : false,
+      "dayOfYear" : 15,
+      "era" : "CE"
+    },
+    "dateAddedToWarehouse" : {
+      "year" : 2026,
+      "month" : "JANUARY",
+      "monthValue" : 1,
+      "dayOfMonth" : 12,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "MONDAY",
+      "leapYear" : false,
+      "dayOfYear" : 12,
+      "era" : "CE"
+    },
+    "numberOfCopies" : 30,
     "numberPages" : 230,
     "numberOfRequests" : 0,
-    "price" : 560,
+    "price" : 30.00,
+    "availability" : true
+  }, {
+    "bookID" : 8,
+    "nameBook" : "Python OOP",
+    "authorBook" : "name",
+    "dateOfPublication" : {
+      "year" : 2019,
+      "month" : "JULY",
+      "monthValue" : 7,
+      "dayOfMonth" : 2,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "TUESDAY",
+      "leapYear" : false,
+      "dayOfYear" : 183,
+      "era" : "CE"
+    },
+    "dateAddedToWarehouse" : {
+      "year" : 2026,
+      "month" : "JANUARY",
+      "monthValue" : 1,
+      "dayOfMonth" : 12,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "MONDAY",
+      "leapYear" : false,
+      "dayOfYear" : 12,
+      "era" : "CE"
+    },
+    "numberOfCopies" : 20,
+    "numberPages" : 450,
+    "numberOfRequests" : 0,
+    "price" : 15.00,
+    "availability" : true
+  }, {
+    "bookID" : 9,
+    "nameBook" : "Java",
+    "authorBook" : "Shildt",
+    "dateOfPublication" : {
+      "year" : 2000,
+      "month" : "JANUARY",
+      "monthValue" : 1,
+      "dayOfMonth" : 2,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "SUNDAY",
+      "leapYear" : true,
+      "dayOfYear" : 2,
+      "era" : "CE"
+    },
+    "dateAddedToWarehouse" : {
+      "year" : 2026,
+      "month" : "JANUARY",
+      "monthValue" : 1,
+      "dayOfMonth" : 12,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "MONDAY",
+      "leapYear" : false,
+      "dayOfYear" : 12,
+      "era" : "CE"
+    },
+    "numberOfCopies" : 20,
+    "numberPages" : 200,
+    "numberOfRequests" : 0,
+    "price" : 12.00,
+    "availability" : true
+  }, {
+    "bookID" : 10,
+    "nameBook" : "C++",
+    "authorBook" : "name",
+    "dateOfPublication" : {
+      "year" : 2019,
+      "month" : "JULY",
+      "monthValue" : 7,
+      "dayOfMonth" : 2,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "TUESDAY",
+      "leapYear" : false,
+      "dayOfYear" : 183,
+      "era" : "CE"
+    },
+    "dateAddedToWarehouse" : {
+      "year" : 2026,
+      "month" : "JANUARY",
+      "monthValue" : 1,
+      "dayOfMonth" : 12,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "MONDAY",
+      "leapYear" : false,
+      "dayOfYear" : 12,
+      "era" : "CE"
+    },
+    "numberOfCopies" : 20,
+    "numberPages" : 450,
+    "numberOfRequests" : 0,
+    "price" : 15.00,
+    "availability" : true
+  }, {
+    "bookID" : 12,
+    "nameBook" : "STREAM API",
+    "authorBook" : "sun",
+    "dateOfPublication" : {
+      "year" : 2001,
+      "month" : "JANUARY",
+      "monthValue" : 1,
+      "dayOfMonth" : 18,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "THURSDAY",
+      "leapYear" : false,
+      "dayOfYear" : 18,
+      "era" : "CE"
+    },
+    "dateAddedToWarehouse" : {
+      "year" : 2026,
+      "month" : "JANUARY",
+      "monthValue" : 1,
+      "dayOfMonth" : 19,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "MONDAY",
+      "leapYear" : false,
+      "dayOfYear" : 19,
+      "era" : "CE"
+    },
+    "numberOfCopies" : 0,
+    "numberPages" : 57,
+    "numberOfRequests" : 0,
+    "price" : 12.00,
+    "availability" : false
+  }, {
+    "bookID" : 13,
+    "nameBook" : "Book not",
+    "authorBook" : "author",
+    "dateOfPublication" : {
+      "year" : 2000,
+      "month" : "JANUARY",
+      "monthValue" : 1,
+      "dayOfMonth" : 1,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "SATURDAY",
+      "leapYear" : true,
+      "dayOfYear" : 1,
+      "era" : "CE"
+    },
+    "dateAddedToWarehouse" : {
+      "year" : 2026,
+      "month" : "JANUARY",
+      "monthValue" : 1,
+      "dayOfMonth" : 19,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "MONDAY",
+      "leapYear" : false,
+      "dayOfYear" : 19,
+      "era" : "CE"
+    },
+    "numberOfCopies" : 12,
+    "numberPages" : 120,
+    "numberOfRequests" : 0,
+    "price" : 20.00,
     "availability" : true
   } ],
   "orders" : [ {
-    "orderID" : 1,
-    "priceOrder" : 1200,
-    "customerEmail" : "dima1234",
-    "orderStatus" : "NEW",
-    "dateOfExecution" : [ 2026, 1, 17 ],
-    "book" : {
-      "bookID" : 3,
-      "nameBook" : "Python for professional",
-      "authorBook" : "author3",
-      "dateOfPublication" : [ 2019, 2, 1 ],
-      "dateAddedToWarehouse" : [ 2026, 1, 10 ],
-      "numberOfCopies" : 50,
-      "numberPages" : 430,
-      "numberOfRequests" : 0,
-      "price" : 1200,
-      "availability" : true
+    "orderID" : 3,
+    "priceOrder" : 18.50,
+    "customerEmail" : "william.jones@example.com",
+    "orderStatus" : "COMPLETED",
+    "dateOfExecution" : {
+      "year" : 2023,
+      "month" : "JANUARY",
+      "monthValue" : 1,
+      "dayOfMonth" : 18,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "WEDNESDAY",
+      "leapYear" : false,
+      "dayOfYear" : 18,
+      "era" : "CE"
     },
-    "listRequest" : [ ]
+    "book" : null,
+    "bookID" : 3
+  }, {
+    "orderID" : 4,
+    "priceOrder" : 20.00,
+    "customerEmail" : "emily.brown@example.com",
+    "orderStatus" : "CANCELLED",
+    "dateOfExecution" : {
+      "year" : 2023,
+      "month" : "JANUARY",
+      "monthValue" : 1,
+      "dayOfMonth" : 25,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "WEDNESDAY",
+      "leapYear" : false,
+      "dayOfYear" : 25,
+      "era" : "CE"
+    },
+    "book" : null,
+    "bookID" : 4
+  }, {
+    "orderID" : 5,
+    "priceOrder" : 14.99,
+    "customerEmail" : "lucy.wilson@example.com",
+    "orderStatus" : "NEW",
+    "dateOfExecution" : {
+      "year" : 2023,
+      "month" : "FEBRUARY",
+      "monthValue" : 2,
+      "dayOfMonth" : 28,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "TUESDAY",
+      "leapYear" : false,
+      "dayOfYear" : 59,
+      "era" : "CE"
+    },
+    "book" : null,
+    "bookID" : 5
+  }, {
+    "orderID" : 6,
+    "priceOrder" : 12.99,
+    "customerEmail" : "dima1234a@gmail.com",
+    "orderStatus" : "CANCELLED",
+    "dateOfExecution" : {
+      "year" : 2026,
+      "month" : "JANUARY",
+      "monthValue" : 1,
+      "dayOfMonth" : 18,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "SUNDAY",
+      "leapYear" : false,
+      "dayOfYear" : 18,
+      "era" : "CE"
+    },
+    "book" : null,
+    "bookID" : 2
+  }, {
+    "orderID" : 1,
+    "priceOrder" : 15.99,
+    "customerEmail" : "john.doe@example.com",
+    "orderStatus" : "CANCELLED",
+    "dateOfExecution" : {
+      "year" : 2023,
+      "month" : "FEBRUARY",
+      "monthValue" : 2,
+      "dayOfMonth" : 20,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "MONDAY",
+      "leapYear" : false,
+      "dayOfYear" : 51,
+      "era" : "CE"
+    },
+    "book" : null,
+    "bookID" : 1
+  }, {
+    "orderID" : 7,
+    "priceOrder" : 30.00,
+    "customerEmail" : "dima1234@gmail.com",
+    "orderStatus" : "NEW",
+    "dateOfExecution" : {
+      "year" : 2026,
+      "month" : "JANUARY",
+      "monthValue" : 1,
+      "dayOfMonth" : 19,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "MONDAY",
+      "leapYear" : false,
+      "dayOfYear" : 19,
+      "era" : "CE"
+    },
+    "book" : null,
+    "bookID" : 7
   }, {
     "orderID" : 2,
-    "priceOrder" : 560,
-    "customerEmail" : "dima1234",
-    "orderStatus" : "NEW",
-    "dateOfExecution" : [ 2026, 1, 17 ],
-    "book" : {
-      "bookID" : 1,
-      "nameBook" : "Java",
-      "authorBook" : "author1",
-      "dateOfPublication" : [ 2025, 12, 1 ],
-      "dateAddedToWarehouse" : [ 2026, 1, 10 ],
-      "numberOfCopies" : 0,
-      "numberPages" : 230,
-      "numberOfRequests" : 0,
-      "price" : 560,
-      "availability" : true
+    "priceOrder" : 12.99,
+    "customerEmail" : "jane.smith@example.com",
+    "orderStatus" : "CANCELLED",
+    "dateOfExecution" : {
+      "year" : 2023,
+      "month" : "MARCH",
+      "monthValue" : 3,
+      "dayOfMonth" : 1,
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "dayOfWeek" : "WEDNESDAY",
+      "leapYear" : false,
+      "dayOfYear" : 60,
+      "era" : "CE"
     },
-    "listRequest" : [ ]
-  }, {
-    "orderID" : 3,
-    "priceOrder" : 560,
-    "customerEmail" : "dima1234",
-    "orderStatus" : "WAITING",
-    "dateOfExecution" : [ 2026, 1, 17 ],
-    "book" : {
-      "bookID" : 1,
-      "nameBook" : "Java",
-      "authorBook" : "author1",
-      "dateOfPublication" : [ 2025, 12, 1 ],
-      "dateAddedToWarehouse" : [ 2026, 1, 10 ],
-      "numberOfCopies" : 0,
-      "numberPages" : 230,
-      "numberOfRequests" : 0,
-      "price" : 560,
-      "availability" : true
-    },
-    "listRequest" : [ ]
+    "book" : null,
+    "bookID" : 2
   } ],
   "requests" : [ {
     "id" : 1,
     "bookId" : 1,
-    "bookName" : "Java",
+    "bookName" : null,
+    "requestCount" : 3,
+    "fulfilled" : false
+  }, {
+    "id" : 2,
+    "bookId" : 2,
+    "bookName" : null,
+    "requestCount" : 5,
+    "fulfilled" : true
+  }, {
+    "id" : 3,
+    "bookId" : 3,
+    "bookName" : null,
+    "requestCount" : 2,
+    "fulfilled" : false
+  }, {
+    "id" : 4,
+    "bookId" : 4,
+    "bookName" : null,
     "requestCount" : 1,
-    "requestDate" : [ 2026, 1, 10 ],
+    "fulfilled" : true
+  }, {
+    "id" : 5,
+    "bookId" : 5,
+    "bookName" : null,
+    "requestCount" : 4,
     "fulfilled" : false
   } ]
 }
