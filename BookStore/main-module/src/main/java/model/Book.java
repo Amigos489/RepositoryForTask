@@ -1,0 +1,168 @@
+package model;
+
+import exportcsv.Exportable;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+/* Класс книги */
+public class Book implements Exportable {
+
+    private Integer bookID;
+    private String nameBook;
+    private String authorBook;
+    private LocalDate dateOfPublication;
+    private LocalDate dateAddedToWarehouse;
+    private Integer numberOfCopies;
+    private Integer numberPages;
+    private Integer numberOfRequests;
+    private BigDecimal price;
+    private boolean availability;
+
+    /* Пустой конструктор */
+    public Book() {
+    }
+
+    /* Конструкторы */
+
+    public Book(String nameBook, String authorBook, LocalDate dateOfPublication,
+                int numberOfCopies, int numberPages, BigDecimal price, LocalDate dateAddedToWarehouse) {
+
+        this.nameBook = nameBook;
+        this.authorBook = authorBook;
+        this.dateOfPublication = dateOfPublication;
+        setNumberOfCopies(numberOfCopies);
+        this.availability = numberOfCopies > 0;         /* Определяем наличие книги, в зависимости от кол-ва экземпляров*/
+        this.numberPages = numberPages;
+        setPrice(price);
+        this.dateAddedToWarehouse = dateAddedToWarehouse;
+        this.numberOfRequests = 0;                      /* Изначально кол-во запросов равно нулю */
+    }
+
+    public Book(String nameBook, String authorBook, LocalDate dateOfPublication,
+                int numberOfCopies, int numberPages, int price, LocalDate dateAddedToWarehouse) {
+
+        this.nameBook = nameBook;
+        this.authorBook = authorBook;
+        this.dateOfPublication = dateOfPublication;
+        setNumberOfCopies(numberOfCopies);
+        this.availability = numberOfCopies > 0;         /* Определяем наличие книги, в зависимости от кол-ва экземпляров*/
+        this.numberPages = numberPages;
+        setPrice(new BigDecimal(price));
+        this.dateAddedToWarehouse = dateAddedToWarehouse;
+        this.numberOfRequests = 0;                      /* Изначально кол-во запросов равно нулю */
+    }
+
+    public Book(String nameBook, String authorBook, LocalDate dateOfPublication,
+                Integer numberOfCopies, Integer numberPages, BigDecimal price, LocalDate dateAddedToWarehouse, Integer numberOfRequests) {
+        this.nameBook = nameBook;
+        this.authorBook = authorBook;
+        this.dateOfPublication = dateOfPublication;
+        setNumberOfCopies(numberOfCopies);
+        this.availability = numberOfCopies > 0;         /* Определяем наличие книги, в зависимости от кол-ва экземпляров*/
+        this.numberPages = numberPages;
+        setPrice(price);
+        this.dateAddedToWarehouse = dateAddedToWarehouse;
+        this.numberOfRequests = numberOfRequests;                      /* Изначально кол-во запросов равно нулю */
+    }
+
+    /* Геттеры */
+
+    public int getBookID() {
+        return this.bookID;
+    }
+
+    public void setBookID(int bookID) {
+        this.bookID = bookID;
+    }
+
+    public String getNameBook() {
+        return this.nameBook;
+    }
+
+    public String getAuthorBook() {
+        return this.authorBook;
+    }
+
+    public LocalDate getDateOfPublication() {
+        return this.dateOfPublication;
+    }
+
+    public int getNumberOfCopies() {
+        return this.numberOfCopies;
+    }
+
+    public void setNumberOfCopies(int numberOfCopies) {
+        if (numberOfCopies >= 0) {
+            this.numberOfCopies = numberOfCopies;
+            this.availability = numberOfCopies > 0; /* Устанавливаем и наличие книги */
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public int getNumberPages() {
+        return this.numberPages;
+    }
+
+    public BigDecimal getPrice() {
+        return this.price;
+    }
+
+    public void setPrice(BigDecimal price) {
+
+        /* Проверка на корректность значения цены */
+        if (price.compareTo(BigDecimal.ZERO) >= 0) {
+            this.price = price;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    /* Сеттеры */
+
+    public boolean getAvailability() {
+        return this.availability;
+    }
+
+    public void setAvailability(boolean availability) {
+        this.availability = availability;
+    }
+
+    public LocalDate getDateAddedToWarehouse() {
+        return dateAddedToWarehouse;
+    }
+
+    public void setDateAddedToWarehouse(LocalDate date) {
+        this.dateAddedToWarehouse = date;
+    }
+
+    public int getNumberOfRequests() {
+        return numberOfRequests;
+    }
+
+    public void incrementRequests() {
+        this.numberOfRequests++;
+    }
+
+    public void resetRequests() {
+        this.numberOfRequests = 0;
+    }
+
+    /* Методы для экспорта */
+
+    @Override
+    public String generateStringHeader() {
+        return "bookId,nameBook,authorBook,dateOfPublication,dateAddedToWarehouse,numberOfCopies,numberPages,price,numberOfRequests,availability";
+    }
+
+    @Override
+    public String generateStringInfo() {
+
+        String safeName = nameBook.replace("\"", "\"\"");
+        String safeAuthor = authorBook.replace("\"", "\"\"");
+
+        return (this.getBookID() + "," + "\"" + safeName + "\"," + "\"" + safeAuthor + "\"," + this.getDateOfPublication() + "," +
+                this.getDateAddedToWarehouse() + "," + this.getNumberOfCopies() + "," + this.getNumberPages() + "," +
+                this.getPrice() + "," + this.getNumberOfRequests() + "," + this.getAvailability());
+    }
+}

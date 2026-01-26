@@ -1,0 +1,5 @@
+package status;
+
+public enum StatusMainMenu {
+    CREATE_CLIENT_MENU, CREATE_LIBRARIAN_MENU, IMPORT_EXPORT, EXIT, UNCORRECT_CHOICE
+}

@@ -1,4 +1,1 @@
 orderID,customerEmail,priceOrder,orderStatus,dateOfExecution,bookId,bookTitle
-1,"dima1234",1200,NEW,2026-01-17,3,"Python for professional"
-2,"dima1234",560,NEW,2026-01-17,1,"Java"
-3,"dima1234",560,WAITING,2026-01-17,1,"Java"

@@ -1,4 +1,13 @@
 bookId,nameBook,authorBook,dateOfPublication,dateAddedToWarehouse,numberOfCopies,numberPages,price,numberOfRequests,availability
-2,"C# for beginner","Shildt",2000-01-23,2026-01-10,40,670,2000,0,true
-1,"Java","author1",2025-12-01,2026-01-10,0,230,560,0,false
-3,"Python for professional","author3",2019-02-01,2026-01-10,50,430,1200,0,true
+1,"The Catcher in the Rye","J.D. Salinger",1951-07-16,2023-01-15,12,277,15.99,5,true
+2,"To Kill a Mockingbird","Harper Lee",1960-07-11,2022-11-20,8,281,12.99,3,true
+3,"1984","George Orwell",1949-06-08,2022-10-05,5,328,18.50,8,true
+4,"Moby Dick","Herman Melville",1851-10-18,2023-02-10,3,635,20.00,10,true
+5,"Pride and Prejudice","Jane Austen",1813-01-28,2022-12-15,6,279,14.99,4,true
+6,"Python for Professional","no Dima",2025-12-12,2025-12-12,0,340,10.00,0,false
+7,"Java Generics","Name",2007-01-15,2026-01-12,30,230,30.00,0,true
+8,"Python OOP","name",2019-07-02,2026-01-12,20,450,15.00,0,true
+9,"Java","Shildt",2000-01-02,2026-01-12,20,200,12.00,0,true
+10,"C++","name",2019-07-02,2026-01-12,20,450,15.00,0,true
+12,"STREAM API","sun",2001-01-18,2026-01-19,0,57,12.00,0,false
+13,"Book not","author",2000-01-01,2026-01-19,12,120,20.00,0,true

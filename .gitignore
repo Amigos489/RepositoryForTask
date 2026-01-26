@@ -1,0 +1,8 @@
+*.class
+*.jar
+.gitignore
+*.json
+*.csv
+.mvn/
+.idea/
+target/
