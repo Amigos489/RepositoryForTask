@@ -1,5 +1,3 @@
-import java.time.LocalDate;
-
 public class BookRequestImportCSV extends ImportCSV<BookRequest>{
 
     @Override
@@ -12,7 +10,6 @@ public class BookRequestImportCSV extends ImportCSV<BookRequest>{
         int bookId = Integer.parseInt(parts[i++]);
         String bookName = parts[i++].replace("\"", "");
         int requestCount = Integer.parseInt(parts[i++]);
-        LocalDate requestDate = LocalDate.parse(parts[i++]);
         boolean fulfilled = Boolean.parseBoolean(parts[i]);
 
         BookRequest request = new BookRequest();
@@ -20,7 +17,6 @@ public class BookRequestImportCSV extends ImportCSV<BookRequest>{
         request.setBookId(bookId);
         request.setBookName(bookName);
         request.setRequestCount(requestCount);
-        request.setRequestDate(requestDate);
         request.setFulfilled(fulfilled);
 
         // синхронизация счётчика ID

@@ -8,7 +8,7 @@ public class Configurator {
 
     public static void configure(Object obj) {
         Class<?> clazz = obj.getClass();
-        Properties props = load("config.property");
+        Properties props = load("C:\\Users\\Admin\\Desktop\\Бэкап DAO\\src\\config.property");
 
         for (Field field : clazz.getDeclaredFields()) {
 
@@ -26,6 +26,8 @@ public class Configurator {
                     field.setInt(obj, Integer.parseInt(value));
                 } else if (field.getType() == boolean.class) {
                     field.setBoolean(obj, Boolean.parseBoolean(value));
+                } else if (field.getType() == String.class) {
+                    field.set(obj, value);
                 }
             } catch (IllegalAccessException e) {
                 throw new RuntimeException(e);

@@ -1,36 +1,36 @@
 {
   "books" : [ {
+    "bookID" : 2,
     "nameBook" : "C# for beginner",
     "authorBook" : "Shildt",
     "dateOfPublication" : [ 2000, 1, 23 ],
     "dateAddedToWarehouse" : [ 2026, 1, 10 ],
-    "bookId" : 2,
     "numberOfCopies" : 40,
     "numberPages" : 670,
-    "price" : 2000,
     "numberOfRequests" : 0,
+    "price" : 2000,
     "availability" : true
   }, {
-    "nameBook" : "Java",
-    "authorBook" : "author1",
-    "dateOfPublication" : [ 2025, 12, 1 ],
-    "dateAddedToWarehouse" : [ 2026, 1, 10 ],
-    "bookId" : 1,
-    "numberOfCopies" : 0,
-    "numberPages" : 230,
-    "price" : 560,
-    "numberOfRequests" : 0,
-    "availability" : false
-  }, {
+    "bookID" : 3,
     "nameBook" : "Python for professional",
     "authorBook" : "author3",
     "dateOfPublication" : [ 2019, 2, 1 ],
     "dateAddedToWarehouse" : [ 2026, 1, 10 ],
-    "bookId" : 3,
     "numberOfCopies" : 50,
     "numberPages" : 430,
-    "price" : 1200,
     "numberOfRequests" : 0,
+    "price" : 1200,
+    "availability" : true
+  }, {
+    "bookID" : 1,
+    "nameBook" : "Java",
+    "authorBook" : "author1",
+    "dateOfPublication" : [ 2025, 12, 1 ],
+    "dateAddedToWarehouse" : [ 2026, 1, 10 ],
+    "numberOfCopies" : 0,
+    "numberPages" : 230,
+    "numberOfRequests" : 0,
+    "price" : 560,
     "availability" : true
   } ],
   "orders" : [ {
@@ -40,15 +40,15 @@
     "orderStatus" : "NEW",
     "dateOfExecution" : [ 2026, 1, 17 ],
     "book" : {
+      "bookID" : 3,
       "nameBook" : "Python for professional",
       "authorBook" : "author3",
       "dateOfPublication" : [ 2019, 2, 1 ],
       "dateAddedToWarehouse" : [ 2026, 1, 10 ],
-      "bookId" : 3,
       "numberOfCopies" : 50,
       "numberPages" : 430,
-      "price" : 1200,
       "numberOfRequests" : 0,
+      "price" : 1200,
       "availability" : true
     },
     "listRequest" : [ ]
@@ -59,16 +59,16 @@
     "orderStatus" : "NEW",
     "dateOfExecution" : [ 2026, 1, 17 ],
     "book" : {
+      "bookID" : 1,
       "nameBook" : "Java",
       "authorBook" : "author1",
       "dateOfPublication" : [ 2025, 12, 1 ],
       "dateAddedToWarehouse" : [ 2026, 1, 10 ],
-      "bookId" : 1,
       "numberOfCopies" : 0,
       "numberPages" : 230,
-      "price" : 560,
       "numberOfRequests" : 0,
-      "availability" : false
+      "price" : 560,
+      "availability" : true
     },
     "listRequest" : [ ]
   }, {
@@ -78,25 +78,18 @@
     "orderStatus" : "WAITING",
     "dateOfExecution" : [ 2026, 1, 17 ],
     "book" : {
+      "bookID" : 1,
       "nameBook" : "Java",
       "authorBook" : "author1",
       "dateOfPublication" : [ 2025, 12, 1 ],
       "dateAddedToWarehouse" : [ 2026, 1, 10 ],
-      "bookId" : 1,
       "numberOfCopies" : 0,
       "numberPages" : 230,
-      "price" : 560,
       "numberOfRequests" : 0,
-      "availability" : false
+      "price" : 560,
+      "availability" : true
     },
-    "listRequest" : [ {
-      "id" : 1,
-      "bookId" : 1,
-      "bookName" : "Java",
-      "requestCount" : 1,
-      "requestDate" : [ 2026, 1, 10 ],
-      "fulfilled" : false
-    } ]
+    "listRequest" : [ ]
   } ],
   "requests" : [ {
     "id" : 1,

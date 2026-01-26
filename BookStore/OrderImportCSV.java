@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -24,7 +25,7 @@ public class OrderImportCSV extends ImportCSV<Order> {
         // Ищем книгу в списке книг, а не заказов
         Book book = null;
         for (Book b : books) {
-            if (b.getBookId() == bookId) {
+            if (b.getBookID() == bookId) {
                 book = b;
                 break;
             }
@@ -34,7 +35,7 @@ public class OrderImportCSV extends ImportCSV<Order> {
             Order order = new Order(book, customerEmail);
             order.setOrderID(orderID);
             order.setOrderStatus(status);
-            order.setPriceOrder(priceOrder);
+            order.setPriceOrder(new BigDecimal(priceOrder));
             order.setDateOfExecution(dateOfExecution);
             return order;
         }

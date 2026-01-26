@@ -1,3 +1,8 @@
-#Config file
+# Database Configuration
+AppConfig.URL=jdbc:postgresql://localhost:5432/book-store
+AppConfig.user=postgres
+AppConfig.password=balabol
+
+# Book store Configuration
 AppConfig.cntMountStale=6
 AppConfig.possibilityMarkComplected=true

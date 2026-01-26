@@ -18,7 +18,7 @@ public class OrderView {
 
         System.out.println("ID заказа: " + order.getOrderID());
         System.out.println("Email: " + order.getCustomerEmail());
-        System.out.println("Книга: " + order.getBook().getNameBook());
+        System.out.println("ID Книги: " + order.getBookID());
         System.out.println("Цена: " + order.getPriceOrder());
         System.out.println("Статус: " + order.getOrderStatus());
         System.out.println("Дата исполнения: " + order.getDateOfExecution());

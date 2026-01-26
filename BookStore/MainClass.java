@@ -1,4 +1,10 @@
+import java.sql.Connection;
+
 public class MainClass {
+
+    static final String NAME_JSON_FILE = "storeData.json";
+    static final int CURRENT_CAPACITY_WAREHOUSE = 0;
+    static final int MAX_CAPACITY_WAREHOUSE = 300;
 
     public static void main(String[] args) throws IllegalAccessException, InstantiationException {
 
@@ -6,14 +12,40 @@ public class MainClass {
         AppConfig config = new AppConfig();
         Configurator.configure(config);
 
-        di.registerBean(Warehouse.class, new Warehouse(0, 300, config.getCntMountStale()));
-        di.registerBean(OrderManagement.class, new OrderManagement(config.isPossibilityMarkComplected()));
-        di.registerBean(JsonStorage.class, new JsonStorage("storeData.json"));
+        ConnectionDataBase connectionDataBase = ConnectionDataBase.getInstance();
+        di.registerBean(ConnectionDataBase.class, connectionDataBase);
+        connectionDataBase.openConnection(config.getURL(), config.getUser(),config.getPassword());
+        di.registerBean(Connection.class, connectionDataBase.getConnection());
+
+        BooksDAO booksDAO = new BooksDAO();
+        di.registerBean(BooksDAO.class, booksDAO);
+        di.injectDependencies(booksDAO);
+
+        OrdersDAO ordersDAO = new OrdersDAO();
+        di.registerBean(OrdersDAO.class, ordersDAO);
+        di.injectDependencies(ordersDAO);
+
+        BookRequestDAO bookRequestDAO = new BookRequestDAO();
+        di.registerBean(BookRequestDAO.class, bookRequestDAO);
+        di.injectDependencies(bookRequestDAO);
+
+        Warehouse warehouse = new Warehouse();
+        di.registerBean(Warehouse.class, warehouse);
+        di.injectDependencies(warehouse);
+        warehouse.initFromDAO();
+
+        OrderManagement orderManagement = new OrderManagement();
+        di.registerBean(OrderManagement.class, orderManagement);
+        di.injectDependencies(orderManagement);
+        orderManagement.initFromDAO();
+        orderManagement.setPriceAllOrders();
+
+        di.registerBean(JsonStorage.class, new JsonStorage(NAME_JSON_FILE));
 
         ServiceStoreBook serviceStoreBook = new ServiceStoreBook();
         di.registerBean(ServiceStoreBook.class, serviceStoreBook);
         di.injectDependencies(serviceStoreBook);
-        serviceStoreBook.loadAll();
+        //serviceStoreBook.loadAll();
 
         ClientMenuController clientMenuController = new ClientMenuController();
         di.registerBean(ClientMenuController.class, clientMenuController);
@@ -45,6 +77,7 @@ public class MainClass {
 
         mainMenuViev.showMenu();
         serviceStoreBook.saveAll();
+        connectionDataBase.closeConnection();
 
     }
     
