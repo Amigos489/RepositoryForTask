@@ -5,3 +5,25 @@
 2026-02-01 17:53:09 ERROR OrderDao:35 - Заказ с указанным id не найден.
 2026-02-01 17:53:14 ERROR OrderDao:35 - Заказ с указанным id не найден.
 2026-02-01 17:53:23 ERROR OrderDao:35 - Заказ с указанным id не найден.
+2026-02-05 04:45:13 ERROR OrderDaoImpl:91 - Transaction already active
+2026-02-05 04:45:13 ERROR BookDaoImpl:59 - Книга с указанным id не найден.
+2026-02-05 04:45:17 ERROR OrderDaoImpl:91 - Transaction already active
+2026-02-05 04:48:26 ERROR OrderDaoImpl:91 - Transaction already active
+2026-02-05 04:52:59 ERROR OrderDaoImpl:91 - Transaction already active
+2026-02-05 04:54:26 ERROR OrderDaoImpl:91 - Transaction already active
+2026-02-05 04:57:44 ERROR OrderDaoImpl:91 - Transaction already active
+2026-02-05 04:59:06 ERROR OrderDaoImpl:91 - Transaction already active
+2026-02-07 03:33:49 ERROR DaoManager:59 - Книга с указанным id не найден.
+2026-02-07 03:37:32 ERROR DaoManager:45 - Книга с указанным id не найден.
+2026-02-07 03:37:38 ERROR DaoManager:58 - Книга с указанным id не найден.
+2026-02-07 03:45:41 ERROR DaoManager:56 - Книга с указанным id не найден.
+2026-02-07 03:46:17 ERROR DaoManager:67 - Книга с указанным id не найден.
+2026-02-07 03:47:13 ERROR DaoManager:107 - Список пустой.
+2026-02-07 03:49:05 ERROR DaoManager:126 - Заказ с указанным id не найден.
+2026-02-07 04:03:29 ERROR DaoManager:126 - Заказ с указанным id не найден.
+2026-02-07 04:17:27 ERROR DaoManager:43 - Книга с указанным id не найден.
+2026-02-07 04:18:02 ERROR DaoManager:67 - Книга с указанным id не найден.
+2026-02-07 04:18:19 ERROR DaoManager:107 - Список пустой.
+2026-02-07 04:18:56 ERROR DaoManager:67 - Книга с указанным id не найден.
+2026-02-07 04:30:35 ERROR DaoManager:67 - Книга с указанным id не найден.
+2026-02-07 04:33:44 ERROR DaoManager:120 - A different object with the same identifier value was already associated with the session : [entitys.OrderEntity#4]

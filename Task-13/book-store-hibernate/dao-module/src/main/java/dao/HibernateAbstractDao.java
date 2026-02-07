@@ -1,5 +1,6 @@
 package dao;
 
+import exception.EntityListEmpty;
 import util.HibernateUtil;
 
 import java.io.Serializable;
@@ -10,6 +11,8 @@ public abstract class HibernateAbstractDao<T, PK extends Serializable> implement
     protected final String messageBookNotFound = "Книга с указанным id не найден.";
     protected final String messageOrderNotFound = "Заказ с указанным id не найден.";
     protected final String messageRequestNotFound = "Запрос с указанным id не найден.";
+    protected final String messageEntityListEmpty = "Список пустой.";
+    protected final String messageIncorrectId = "Передан некорректный id";
 
     @Override
     public PK save(T entity) {
@@ -26,8 +29,7 @@ public abstract class HibernateAbstractDao<T, PK extends Serializable> implement
         HibernateUtil.getCurrentSession().delete(id);
     }
 
-    @Override
-    public List<T> findAll() {
+    public List<T> findAll() throws EntityListEmpty {
         return HibernateUtil.getCurrentSession().createCriteria(type).list();
     }
 

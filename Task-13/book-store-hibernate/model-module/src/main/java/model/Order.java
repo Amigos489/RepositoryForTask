@@ -44,6 +44,14 @@ public class Order implements GettingInfo, ReferringBook {
         this.statusOrder = statusOrder;
     }
 
+    public Order(int orderId, LocalDate dateComplection, int bookId, String emailUser, StatusOrder statusOrder) {
+        this.orderId = orderId;
+        this.dateComplection = dateComplection;
+        this.bookId = bookId;
+        this.emailUser = emailUser;
+        this.statusOrder = statusOrder;
+    }
+
     public Order(int bookId) {
         this.bookId = bookId;
     }

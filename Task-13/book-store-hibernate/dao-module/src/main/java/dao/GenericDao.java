@@ -1,5 +1,7 @@
 package dao;
 
+import exception.EntityListEmpty;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -10,8 +12,6 @@ public interface GenericDao<T, PK extends Serializable> {
     public void update(T entity);
 
     public void delete(PK id);
-
-    public List<T> findAll();
 
     public T find(PK id);
 }

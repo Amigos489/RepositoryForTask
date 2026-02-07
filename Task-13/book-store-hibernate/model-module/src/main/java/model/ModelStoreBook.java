@@ -4,6 +4,7 @@ import csv.ExportEntityCsv;
 import csv.ImportBookCsv;
 import csv.ImportOrderCsv;
 import csv.ImportRequestCsv;
+import dao.DaoManager;
 import enums.StatusOperationBook;
 import enums.StatusOperationCsv;
 import enums.StatusOperationOrder;
@@ -39,12 +40,6 @@ public class ModelStoreBook {
     /* Операции с книгами */
 
     public StatusOperationBook addBookToWarehouse(int bookId) {
-        int activeRequestId = orderManagement.findActiveRequestByBookId(bookId);
-        if (activeRequestId != -1) {
-            orderManagement.closedRequest(activeRequestId);
-        }
-        orderManagement.updateOrder(bookId);
-        orderManagement.closedRequestByBookId(bookId);
         return warehouse.addBookById(bookId);
     }
 
@@ -59,7 +54,7 @@ public class ModelStoreBook {
         }
         try {
             if (warehouse.isBookAvailable(bookId)) {
-                orderManagement.createOrder(orderIdCouter, bookId, book.getPrice(),userEmail,StatusOrder.NEW);
+                orderManagement.createOrder(orderIdCouter, bookId, book.getPrice(),userEmail,StatusOrder.NEW, LocalDate.now().plusDays(7));
                 orderIdCouter++;
                 return StatusOrder.NEW;
             } else {

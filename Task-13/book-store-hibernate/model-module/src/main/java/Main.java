@@ -14,9 +14,10 @@ import actions.orderoperation.list.GetListComplectedOrderAction;
 import actions.requestoperation.GetListAllRequestAction;
 import configuration.Configurator;
 import controller.Controller;
-import dao.BookDao;
-import dao.OrderDao;
-import dao.RequestDao;
+import dao.BookDaoImpl;
+import dao.DaoManager;
+import dao.OrderDaoImpl;
+import dao.RequestDaoImpl;
 import json.JsonDataModel;
 import mapping.BookMapping;
 import mapping.OrderMapping;
@@ -36,16 +37,17 @@ public class Main {
         JsonDataModel jsonDataModel = new JsonDataModel("book-store.json");
 
         Session session = HibernateUtil.getCurrentSession();
-        BookDao bookDao = new BookDao(session);
-        OrderDao orderDao = new OrderDao(session);
-        RequestDao requestDao = new RequestDao(session);
+        BookDaoImpl bookDao = new BookDaoImpl(session);
+        OrderDaoImpl orderDao = new OrderDaoImpl(session);
+        RequestDaoImpl requestDao = new RequestDaoImpl(session);
 
         BookMapping bookMapping = new BookMapping();
         OrderMapping orderMapping = new OrderMapping();
         RequestMapping requestMapping = new RequestMapping();
+        DaoManager daoManager = new DaoManager(session, orderDao, bookDao, requestDao);
 
-        Warehouse warehouse = new Warehouse(bookDao, bookMapping);
-        OrderManagement orderManagement = new OrderManagement(orderDao, orderMapping, requestDao, requestMapping);
+        Warehouse warehouse = new Warehouse(bookMapping, daoManager);
+        OrderManagement orderManagement = new OrderManagement(orderMapping, requestMapping, daoManager);
 
         Configurator configurator = new Configurator("config.properties");
         warehouse = (Warehouse) configurator.configurationObject(warehouse);
