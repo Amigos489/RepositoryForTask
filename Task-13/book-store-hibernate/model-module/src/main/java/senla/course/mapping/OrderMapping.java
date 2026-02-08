@@ -1,9 +1,7 @@
 package mapping;
 
-import entitys.BookEntity;
-import entitys.OrderEntity;
+import senla.course.entitys.OrderEntity;
 import enums.StatusOrder;
-import model.Book;
 import model.Order;
 
 import java.math.BigDecimal;

@@ -1,16 +1,14 @@
 package model;
 
-import annotations.ConfigProperty;
-import dao.DaoManager;
-import dao.OrderDaoImpl;
-import dao.RequestDaoImpl;
+import senla.course.dao.DaoManager;
 import enums.StatusOperationOrder;
 import enums.StatusOrder;
-import exception.EntityListEmpty;
-import exception.EntityNotFound;
+import senla.course.exception.EntityListEmpty;
+import senla.course.exception.EntityNotFound;
 import mapping.OrderMapping;
 import mapping.RequestMapping;
-import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import sorted.order.SortedOrderByDateComplection;
 import sorted.order.SortedOrderByPrice;
 import sorted.order.SortedOrderByStatus;
@@ -23,11 +21,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@Component
 public class OrderManagement {
 
     private List<Order> orders;
     private List<Request> requests;
-    @ConfigProperty(type = Boolean.class)
+    @Value("${orderManagement.possibilityClosedRequest}")
     private boolean possibilityClosedRequest;
     private OrderMapping orderMapper;
     private RequestMapping requestMapping;

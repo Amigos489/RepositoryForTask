@@ -4,6 +4,8 @@ import model.Book;
 import model.ModelStoreBook;
 import model.Order;
 import model.Request;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import tools.jackson.core.type.TypeReference;
 import tools.jackson.databind.ObjectMapper;
 
@@ -13,6 +15,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+@Component
 public class JsonDataModel {
     private ObjectMapper objectMapper = new ObjectMapper();
     private String nameFile;
@@ -20,7 +23,7 @@ public class JsonDataModel {
     private List<Order> orders;
     private List<Request> requests;
 
-    public JsonDataModel(String nameFile) {
+    public JsonDataModel(@Value("${jsonDataModel.nameFile}") String nameFile) {
         this.nameFile = nameFile;
     }
 

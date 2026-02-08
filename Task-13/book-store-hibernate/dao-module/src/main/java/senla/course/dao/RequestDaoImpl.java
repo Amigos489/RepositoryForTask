@@ -8,18 +8,18 @@ import exception.QueryInvalidResult;
 import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
 import java.util.List;
 
+@Repository
 public class RequestDaoImpl extends HibernateAbstractDao<RequestEntity, Integer> implements IRequestDao {
 
-    private final Logger log = LoggerFactory.getLogger(RequestDaoImpl.class);
-    private final Session session;
-
     public RequestDaoImpl(Session session) {
-        this.session = session;
+
+        super(session, RequestEntity.class);
     }
 
     @Override

@@ -4,14 +4,16 @@ import enums.StatusOperationBook;
 import enums.StatusOperationCsv;
 import enums.StatusOperationOrder;
 import enums.StatusOrder;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
+@Service
 public class ServiceStoreBook {
 
-    private ModelStoreBook modelStoreBook;
+    private final ModelStoreBook modelStoreBook;
 
     public ServiceStoreBook(ModelStoreBook modelStoreBook) {
         this.modelStoreBook = modelStoreBook;

@@ -4,14 +4,16 @@ import entitys.BookEntity;
 import exception.EntityListEmpty;
 import exception.EntityNotFound;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
+
 import java.time.LocalDate;
 import java.util.List;
 
+@Repository
 public class BookDaoImpl extends HibernateAbstractDao<BookEntity, Integer> implements IBookDao {
-    private final Session session;
 
     public BookDaoImpl(Session session) {
-        this.session = session;
+        super(session, BookEntity.class);
     }
 
     @Override

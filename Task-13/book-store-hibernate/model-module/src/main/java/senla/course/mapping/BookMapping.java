@@ -1,6 +1,6 @@
 package mapping;
 
-import entitys.BookEntity;
+import senla.course.entitys.BookEntity;
 import model.Book;
 
 import java.math.BigDecimal;

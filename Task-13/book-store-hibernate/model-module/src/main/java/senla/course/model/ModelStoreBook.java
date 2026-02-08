@@ -4,14 +4,14 @@ import csv.ExportEntityCsv;
 import csv.ImportBookCsv;
 import csv.ImportOrderCsv;
 import csv.ImportRequestCsv;
-import dao.DaoManager;
 import enums.StatusOperationBook;
 import enums.StatusOperationCsv;
 import enums.StatusOperationOrder;
 import enums.StatusOrder;
-import exception.EntityNotFound;
+import senla.course.exception.EntityNotFound;
 import exceptions.InvalidValueFileCsv;
 import json.JsonDataModel;
+import org.springframework.stereotype.Component;
 import sorted.book.SortedBookById;
 import sorted.order.SortedOrderById;
 import sorted.request.SortedRequestById;
@@ -22,6 +22,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+@Component
 public class ModelStoreBook {
 
     private static int orderIdCouter = 1;

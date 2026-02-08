@@ -5,18 +5,17 @@ import entitys.OrderEntity;
 import exception.EntityListEmpty;
 import exception.EntityNotFound;
 import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
-import javax.persistence.NoResultException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
+@Repository
 public class OrderDaoImpl extends HibernateAbstractDao<OrderEntity, Integer> implements IOrderDao {
 
-    private final Session session;
-
     public OrderDaoImpl(Session session) {
-        this.session = session;
+        super(session, OrderEntity.class);
     }
 
     public OrderEntity findOrderById(Integer id) throws EntityNotFound {

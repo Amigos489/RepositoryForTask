@@ -1,8 +1,6 @@
 package mapping;
 
-import entitys.OrderEntity;
-import entitys.RequestEntity;
-import model.Order;
+import senla.course.entitys.RequestEntity;
 import model.Request;
 
 public class RequestMapping extends AbstractMapper<Request, RequestEntity> {

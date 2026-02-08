@@ -1,22 +1,23 @@
 package model;
 
-import annotations.ConfigProperty;
-import dao.BookDaoImpl;
-import dao.DaoManager;
+import senla.course.dao.DaoManager;
 import enums.StatusOperationBook;
-import exception.EntityListEmpty;
-import exception.EntityNotFound;
+import senla.course.exception.EntityListEmpty;
+import senla.course.exception.EntityNotFound;
 import mapping.BookMapping;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import sorted.book.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@Component
 public class Warehouse {
 
     private List<Book> books;
-    @ConfigProperty(type = Integer.class)
+    @Value("${warehouse.countMonthDefineStaleBook}")
     private int countMonthDefineStaleBook;
     private BookMapping mapper;
     private DaoManager daoManager;
