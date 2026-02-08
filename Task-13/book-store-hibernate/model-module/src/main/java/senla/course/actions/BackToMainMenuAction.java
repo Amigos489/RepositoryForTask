@@ -1,7 +1,7 @@
-package actions;
+package senla.course.actions;
 
-import ui.IAction;
-import ui.Navigator;
+import senla.course.ui.IAction;
+import senla.course.ui.Navigator;
 
 public class BackToMainMenuAction implements IAction {
 

@@ -1,8 +1,8 @@
-package actions;
+package senla.course.actions;
 
-import controller.Controller;
-import model.GettingInfo;
-import ui.IAction;
+import senla.course.controller.Controller;
+import senla.course.model.GettingInfo;
+import senla.course.ui.IAction;
 
 import java.util.List;
 import java.util.Scanner;

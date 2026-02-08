@@ -1,8 +1,7 @@
-package dao;
+package senla.course.dao;
 
-import exception.EntityListEmpty;
+import senla.course.exception.EntityListEmpty;
 import org.hibernate.Session;
-import util.HibernateUtil;
 
 import java.io.Serializable;
 import java.util.List;

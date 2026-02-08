@@ -1,4 +1,4 @@
-package model;
+package senla.course.model;
 
 @FunctionalInterface
 public interface ReferringBook {

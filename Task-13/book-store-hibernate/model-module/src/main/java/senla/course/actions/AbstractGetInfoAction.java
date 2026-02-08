@@ -1,9 +1,9 @@
-package actions;
+package senla.course.actions;
 
-import controller.Controller;
-import exceptions.InvalidInput;
-import model.GettingInfo;
-import ui.IAction;
+import senla.course.controller.Controller;
+import senla.course.exceptions.InvalidInput;
+import senla.course.model.GettingInfo;
+import senla.course.ui.IAction;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

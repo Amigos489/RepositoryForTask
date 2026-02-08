@@ -1,11 +1,13 @@
-package mapping;
+package senla.course.mapping;
 
+import org.springframework.stereotype.Component;
 import senla.course.entitys.BookEntity;
-import model.Book;
+import senla.course.model.Book;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@Component
 public class BookMapping extends AbstractMapper<Book, BookEntity> {
 
     @Override

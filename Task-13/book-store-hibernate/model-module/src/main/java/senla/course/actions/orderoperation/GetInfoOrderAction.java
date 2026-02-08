@@ -1,8 +1,8 @@
-package actions.orderoperation;
+package senla.course.actions.orderoperation;
 
-import actions.AbstractGetInfoAction;
-import controller.Controller;
-import model.Order;
+import senla.course.actions.AbstractGetInfoAction;
+import senla.course.controller.Controller;
+import senla.course.model.Order;
 
 public class GetInfoOrderAction extends AbstractGetInfoAction<Order> {
 

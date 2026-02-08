@@ -1,7 +1,7 @@
-package ui.console;
+package senla.course.ui.console;
 
-import ui.IAction;
-import ui.MenuController;
+import senla.course.ui.IAction;
+import senla.course.ui.MenuController;
 
 public class ExitAppAction implements IAction {
 
@@ -13,6 +13,7 @@ public class ExitAppAction implements IAction {
 
     @Override
     public void execute() {
+
         menuController.exitFromProgramm();
     }
 }

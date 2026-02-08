@@ -1,10 +1,10 @@
-package dao;
+package senla.course.dao;
 
-import entitys.BookEntity;
-import entitys.OrderEntity;
-import entitys.RequestEntity;
-import exception.EntityListEmpty;
-import exception.EntityNotFound;
+import senla.course.entitys.BookEntity;
+import senla.course.entitys.OrderEntity;
+import senla.course.entitys.RequestEntity;
+import senla.course.exception.EntityListEmpty;
+import senla.course.exception.EntityNotFound;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

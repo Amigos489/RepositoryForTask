@@ -1,9 +1,8 @@
-package json;
+package senla.course.json;
 
-import model.Book;
-import model.ModelStoreBook;
-import model.Order;
-import model.Request;
+import senla.course.model.Book;
+import senla.course.model.Order;
+import senla.course.model.Request;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import tools.jackson.core.type.TypeReference;

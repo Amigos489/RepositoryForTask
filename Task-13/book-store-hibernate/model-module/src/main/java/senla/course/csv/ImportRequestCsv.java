@@ -1,7 +1,7 @@
-package csv;
+package senla.course.csv;
 
-import exceptions.InvalidValueFileCsv;
-import model.Request;
+import senla.course.exceptions.InvalidValueFileCsv;
+import senla.course.model.Request;
 import java.time.format.DateTimeParseException;
 
 public class ImportRequestCsv extends AbstractImportEntityCsv<Request> {

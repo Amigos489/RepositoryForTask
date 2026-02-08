@@ -1,10 +1,7 @@
-package actions.orderoperation;
+package senla.course.actions.orderoperation;
 
-import controller.Controller;
-import enums.StatusOperationOrder;
-import ui.IAction;
-
-import java.util.Scanner;
+import senla.course.controller.Controller;
+import senla.course.enums.StatusOperationOrder;
 
 public class ComplectedOrderAction extends AbstractOperationOrderAction {
 

@@ -1,9 +1,9 @@
-package model;
+package senla.course.model;
 
-import enums.StatusOperationBook;
-import enums.StatusOperationCsv;
-import enums.StatusOperationOrder;
-import enums.StatusOrder;
+import senla.course.enums.StatusOperationBook;
+import senla.course.enums.StatusOperationCsv;
+import senla.course.enums.StatusOperationOrder;
+import senla.course.enums.StatusOrder;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;

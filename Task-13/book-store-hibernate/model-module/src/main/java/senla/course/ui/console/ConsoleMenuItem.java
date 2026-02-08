@@ -1,8 +1,8 @@
-package ui.console;
+package senla.course.ui.console;
 
-import ui.IAction;
-import ui.Menu;
-import ui.MenuItem;
+import senla.course.ui.IAction;
+import senla.course.ui.Menu;
+import senla.course.ui.MenuItem;
 
 public class ConsoleMenuItem implements MenuItem {
 

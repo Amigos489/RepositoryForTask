@@ -1,20 +1,20 @@
-package model;
+package senla.course.model;
 
-import csv.ExportEntityCsv;
-import csv.ImportBookCsv;
-import csv.ImportOrderCsv;
-import csv.ImportRequestCsv;
-import enums.StatusOperationBook;
-import enums.StatusOperationCsv;
-import enums.StatusOperationOrder;
-import enums.StatusOrder;
+import senla.course.csv.ExportEntityCsv;
+import senla.course.csv.ImportBookCsv;
+import senla.course.csv.ImportOrderCsv;
+import senla.course.csv.ImportRequestCsv;
+import senla.course.enums.StatusOperationBook;
+import senla.course.enums.StatusOperationCsv;
+import senla.course.enums.StatusOperationOrder;
+import senla.course.enums.StatusOrder;
 import senla.course.exception.EntityNotFound;
-import exceptions.InvalidValueFileCsv;
-import json.JsonDataModel;
+import senla.course.exceptions.InvalidValueFileCsv;
+import senla.course.json.JsonDataModel;
 import org.springframework.stereotype.Component;
-import sorted.book.SortedBookById;
-import sorted.order.SortedOrderById;
-import sorted.request.SortedRequestById;
+import senla.course.sorted.book.SortedBookById;
+import senla.course.sorted.order.SortedOrderById;
+import senla.course.sorted.request.SortedRequestById;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

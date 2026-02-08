@@ -1,8 +1,8 @@
-package actions.requestoperation;
+package senla.course.actions.requestoperation;
 
-import actions.AbstractGetSortedListAction;
-import controller.Controller;
-import model.Request;
+import senla.course.actions.AbstractGetSortedListAction;
+import senla.course.controller.Controller;
+import senla.course.model.Request;
 
 import java.util.List;
 

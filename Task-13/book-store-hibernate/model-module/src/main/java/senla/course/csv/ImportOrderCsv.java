@@ -1,8 +1,8 @@
-package csv;
+package senla.course.csv;
 
-import enums.StatusOrder;
-import exceptions.InvalidValueFileCsv;
-import model.Order;
+import senla.course.enums.StatusOrder;
+import senla.course.exceptions.InvalidValueFileCsv;
+import senla.course.model.Order;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

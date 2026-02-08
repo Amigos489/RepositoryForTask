@@ -1,7 +1,7 @@
-package actions.bookoperation;
+package senla.course.actions.bookoperation;
 
-import controller.Controller;
-import enums.StatusOperationBook;
+import senla.course.controller.Controller;
+import senla.course.enums.StatusOperationBook;
 
 public class WriteBookFromWarehouseAction extends AbstractOperationBookAction {
 

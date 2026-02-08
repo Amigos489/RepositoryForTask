@@ -1,9 +1,8 @@
-package actions.bookoperation;
+package senla.course.actions.bookoperation;
 
-import controller.Controller;
-import enums.StatusOperationBook;
-import enums.StatusOrder;
-import ui.IAction;
+import senla.course.controller.Controller;
+import senla.course.enums.StatusOperationBook;
+import senla.course.ui.IAction;
 
 import java.util.Scanner;
 

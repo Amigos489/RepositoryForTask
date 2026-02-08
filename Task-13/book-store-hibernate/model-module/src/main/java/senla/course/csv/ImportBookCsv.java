@@ -1,7 +1,7 @@
-package csv;
+package senla.course.csv;
 
-import exceptions.InvalidValueFileCsv;
-import model.Book;
+import senla.course.exceptions.InvalidValueFileCsv;
+import senla.course.model.Book;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

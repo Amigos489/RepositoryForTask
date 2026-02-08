@@ -1,15 +1,16 @@
-package actions;
+package senla.course.actions;
 
-import ui.IAction;
-import ui.console.ConsoleMenu;
-import ui.console.ConsoleNavigator;
+import senla.course.ui.IAction;
+import senla.course.ui.Navigator;
+import senla.course.ui.console.ConsoleMenu;
+
 
 public class OpenMenuAction implements IAction {
 
-    private ConsoleNavigator navigator;
+    private Navigator navigator;
     private ConsoleMenu menu;
 
-    public OpenMenuAction(ConsoleNavigator navigator, ConsoleMenu menu) {
+    public OpenMenuAction(Navigator navigator, ConsoleMenu menu) {
         this.navigator = navigator;
         this.menu = menu;
     }

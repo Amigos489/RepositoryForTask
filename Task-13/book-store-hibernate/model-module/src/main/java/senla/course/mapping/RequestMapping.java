@@ -1,8 +1,10 @@
-package mapping;
+package senla.course.mapping;
 
+import org.springframework.stereotype.Component;
 import senla.course.entitys.RequestEntity;
-import model.Request;
+import senla.course.model.Request;
 
+@Component
 public class RequestMapping extends AbstractMapper<Request, RequestEntity> {
 
     @Override

@@ -1,4 +1,4 @@
-package mapping;
+package senla.course.mapping;
 
 import java.util.ArrayList;
 import java.util.List;

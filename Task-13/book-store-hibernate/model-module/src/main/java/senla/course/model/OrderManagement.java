@@ -1,19 +1,20 @@
-package model;
+package senla.course.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import senla.course.dao.DaoManager;
-import enums.StatusOperationOrder;
-import enums.StatusOrder;
+import senla.course.enums.StatusOperationOrder;
+import senla.course.enums.StatusOrder;
 import senla.course.exception.EntityListEmpty;
 import senla.course.exception.EntityNotFound;
-import mapping.OrderMapping;
-import mapping.RequestMapping;
+import senla.course.mapping.OrderMapping;
+import senla.course.mapping.RequestMapping;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import sorted.order.SortedOrderByDateComplection;
-import sorted.order.SortedOrderByPrice;
-import sorted.order.SortedOrderByStatus;
-import sorted.request.SortedRequestByCountRequest;
-import sorted.request.SortedRequestByNameBook;
+import senla.course.sorted.order.SortedOrderByDateComplection;
+import senla.course.sorted.order.SortedOrderByPrice;
+import senla.course.sorted.order.SortedOrderByStatus;
+import senla.course.sorted.request.SortedRequestByCountRequest;
+import senla.course.sorted.request.SortedRequestByNameBook;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -32,10 +33,7 @@ public class OrderManagement {
     private RequestMapping requestMapping;
     private DaoManager daoManager;
 
-
-    public OrderManagement() {
-    }
-
+    @Autowired
     public OrderManagement(OrderMapping orderMapper, RequestMapping requestMapping, DaoManager daoManager) {
         this.orderMapper = orderMapper;
         this.requestMapping = requestMapping;

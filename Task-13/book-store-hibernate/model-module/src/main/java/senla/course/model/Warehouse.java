@@ -1,13 +1,14 @@
-package model;
+package senla.course.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import senla.course.dao.DaoManager;
-import enums.StatusOperationBook;
+import senla.course.enums.StatusOperationBook;
 import senla.course.exception.EntityListEmpty;
 import senla.course.exception.EntityNotFound;
-import mapping.BookMapping;
+import senla.course.mapping.BookMapping;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import sorted.book.*;
+import senla.course.sorted.book.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,8 +23,7 @@ public class Warehouse {
     private BookMapping mapper;
     private DaoManager daoManager;
 
-    public Warehouse() {}
-
+    @Autowired
     public Warehouse(BookMapping mapper, DaoManager daoManager) {
         this.mapper = mapper;
         this.daoManager = daoManager;

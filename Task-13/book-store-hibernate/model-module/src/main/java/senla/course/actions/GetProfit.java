@@ -1,8 +1,8 @@
-package actions;
+package senla.course.actions;
 
-import controller.Controller;
-import exceptions.InvalidInput;
-import ui.IAction;
+import senla.course.controller.Controller;
+import senla.course.exceptions.InvalidInput;
+import senla.course.ui.IAction;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

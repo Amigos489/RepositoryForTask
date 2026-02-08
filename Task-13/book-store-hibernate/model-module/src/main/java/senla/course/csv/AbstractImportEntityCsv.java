@@ -1,6 +1,6 @@
-package csv;
+package senla.course.csv;
 
-import exceptions.InvalidValueFileCsv;
+import senla.course.exceptions.InvalidValueFileCsv;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

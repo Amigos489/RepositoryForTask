@@ -1,4 +1,4 @@
-package ui;
+package senla.course.ui;
 
 public interface AbstractUserInterfaceFactory {
     public Menu makeMenu();

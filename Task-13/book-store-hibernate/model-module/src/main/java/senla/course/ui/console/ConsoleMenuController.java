@@ -1,8 +1,8 @@
-package ui.console;
+package senla.course.ui.console;
 
-import ui.Builder;
-import ui.MenuController;
-import ui.Navigator;
+import senla.course.ui.Builder;
+import senla.course.ui.MenuController;
+import senla.course.ui.Navigator;
 
 public class ConsoleMenuController implements MenuController {
 
@@ -28,6 +28,7 @@ public class ConsoleMenuController implements MenuController {
         }
     }
 
+    @Override
     public void exitFromProgramm() {
         isExit = true;
     }

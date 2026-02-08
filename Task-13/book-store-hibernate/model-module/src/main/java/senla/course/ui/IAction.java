@@ -1,4 +1,4 @@
-package ui;
+package senla.course.ui;
 
 @FunctionalInterface
 public interface IAction {

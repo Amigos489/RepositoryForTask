@@ -1,8 +1,8 @@
-package actions.orderoperation.list;
+package senla.course.actions.orderoperation.list;
 
-import actions.AbstractGetSortedListAction;
-import controller.Controller;
-import model.Order;
+import senla.course.actions.AbstractGetSortedListAction;
+import senla.course.controller.Controller;
+import senla.course.model.Order;
 
 import java.util.List;
 

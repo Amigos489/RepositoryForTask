@@ -1,23 +1,22 @@
-package controller;
+package senla.course.controller;
 
-import enums.StatusOperationBook;
-import enums.StatusOperationCsv;
-import enums.StatusOperationOrder;
-import enums.StatusOrder;
-import model.Book;
-import model.Order;
-import model.Request;
-import model.ServiceStoreBook;
+import senla.course.enums.StatusOperationBook;
+import senla.course.enums.StatusOperationCsv;
+import senla.course.enums.StatusOperationOrder;
+import senla.course.enums.StatusOrder;
+import senla.course.model.Book;
+import senla.course.model.Order;
+import senla.course.model.Request;
+import senla.course.model.ServiceStoreBook;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
+@org.springframework.stereotype.Controller
 public class Controller {
 
     private ServiceStoreBook serviceStoreBook;
-
-    public Controller() {}
 
     public Controller(ServiceStoreBook serviceStoreBook) {
         this.serviceStoreBook = serviceStoreBook;

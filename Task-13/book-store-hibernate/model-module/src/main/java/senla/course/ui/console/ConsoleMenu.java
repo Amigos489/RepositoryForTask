@@ -1,34 +1,39 @@
-package ui.console;
+package senla.course.ui.console;
 
-import ui.Menu;
-import ui.MenuItem;
+import senla.course.ui.Menu;
+import senla.course.ui.MenuItem;
+
 import java.util.List;
 
 public class ConsoleMenu implements Menu {
 
     private String nameMenu;
-    private final List<ConsoleMenuItem> menuItems;
+    private final List<MenuItem> menuItems;
 
-    public ConsoleMenu(String nameMenu, List<ConsoleMenuItem> menuItems) {
+    public ConsoleMenu(String nameMenu, List<MenuItem> menuItems) {
         this.nameMenu = nameMenu;
         this.menuItems = menuItems;
     }
 
-    public void addMenuItem(ConsoleMenuItem menuItem) {
+    @Override
+    public void addMenuItem(MenuItem menuItem) {
         menuItems.add(menuItem);
     }
 
     /* Геттеры и сеттеры */
 
+    @Override
     public String getNameMenu() {
         return nameMenu;
     }
 
+    @Override
     public void setNameMenu(String nameMenu) {
         this.nameMenu = nameMenu;
     }
 
-    public List<ConsoleMenuItem> getMenuItems() {
+    @Override
+    public List<MenuItem> getMenuItems() {
         return menuItems;
     }
 }

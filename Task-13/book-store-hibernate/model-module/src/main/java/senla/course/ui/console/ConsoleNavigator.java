@@ -1,23 +1,25 @@
-package ui.console;
+package senla.course.ui.console;
 
-import exceptions.InvalidInput;
-import ui.Navigator;
+import senla.course.exceptions.InvalidInput;
+import senla.course.ui.Menu;
+import senla.course.ui.MenuItem;
+import senla.course.ui.Navigator;
 
 import java.util.Scanner;
 
 public class ConsoleNavigator implements Navigator {
 
-    private ConsoleMenu currentMenu;
-    private ConsoleMenu mainMenu;
+    private Menu currentMenu;
+    private Menu mainMenu;
     private Scanner input = new Scanner(System.in);
 
     public ConsoleNavigator() {}
 
-    public ConsoleNavigator(ConsoleMenu currentMenu) {
+    public ConsoleNavigator(Menu currentMenu) {
         this.currentMenu = currentMenu;
     }
 
-    public ConsoleNavigator(ConsoleMenu currentMenu, ConsoleMenu mainMenu) {
+    public ConsoleNavigator(Menu currentMenu, Menu mainMenu) {
 
         this.currentMenu = currentMenu;
         this.mainMenu = mainMenu;
@@ -33,7 +35,7 @@ public class ConsoleNavigator implements Navigator {
         System.out.println(currentMenu.getNameMenu());
         System.out.println("Выберите действие:");
         int numItem = 1;
-        for (ConsoleMenuItem item : currentMenu.getMenuItems()) {
+        for (MenuItem item : currentMenu.getMenuItems()) {
             System.out.print(numItem + ". ");
             numItem++;
             System.out.println(item.getTitle());
@@ -47,11 +49,6 @@ public class ConsoleNavigator implements Navigator {
             System.out.println(e.getMessage());
             return -1;
         }
-    }
-
-    @Override
-    public int getCountItemInMenu() {
-        return currentMenu.getMenuItems().size();
     }
 
     @Override
@@ -69,6 +66,7 @@ public class ConsoleNavigator implements Navigator {
         printMenu();
     }
 
+    @Override
     public int processingUserInput() throws InvalidInput {
         if (input.hasNextInt()) {
             int choice = input.nextInt();
@@ -80,11 +78,13 @@ public class ConsoleNavigator implements Navigator {
         }
     }
 
-    public void setCurrentMenu(ConsoleMenu currentMenu) {
+    @Override
+    public void setCurrentMenu(Menu currentMenu) {
         this.currentMenu = currentMenu;
     }
 
-    public void setMainMenu(ConsoleMenu mainMenu) {
+    @Override
+    public void setMainMenu(Menu mainMenu) {
         this.mainMenu = mainMenu;
     }
 }

@@ -1,8 +1,8 @@
-package actions.orderoperation;
+package senla.course.actions.orderoperation;
 
-import controller.Controller;
-import enums.StatusOperationOrder;
-import ui.IAction;
+import senla.course.controller.Controller;
+import senla.course.enums.StatusOperationOrder;
+import senla.course.ui.IAction;
 
 import java.util.Scanner;
 

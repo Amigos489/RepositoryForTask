@@ -1,5 +1,11 @@
-package ui;
+package senla.course.ui;
 
 public interface MenuItem {
-    public void doAction();
+    void doAction();
+
+    String getTitle();
+
+    void setTitle(String title);
+
+    Menu getNextMenu();
 }

@@ -1,8 +1,8 @@
-package actions.bookoperation.list;
+package senla.course.actions.bookoperation.list;
 
-import actions.AbstractGetSortedListAction;
-import controller.Controller;
-import model.Book;
+import senla.course.actions.AbstractGetSortedListAction;
+import senla.course.controller.Controller;
+import senla.course.model.Book;
 
 import java.util.List;
 

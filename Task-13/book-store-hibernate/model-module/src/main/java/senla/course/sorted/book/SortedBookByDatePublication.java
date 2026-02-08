@@ -1,6 +1,6 @@
-package sorted.book;
+package senla.course.sorted.book;
 
-import model.Book;
+import senla.course.model.Book;
 import java.util.Comparator;
 
 public class SortedBookByDatePublication implements Comparator<Book> {

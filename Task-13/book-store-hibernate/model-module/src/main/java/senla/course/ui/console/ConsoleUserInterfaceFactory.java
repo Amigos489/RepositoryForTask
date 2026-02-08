@@ -1,6 +1,6 @@
-package ui.console;
+package senla.course.ui.console;
 
-import ui.AbstractUserInterfaceFactory;
+import senla.course.ui.AbstractUserInterfaceFactory;
 
 public class ConsoleUserInterfaceFactory implements AbstractUserInterfaceFactory {
 

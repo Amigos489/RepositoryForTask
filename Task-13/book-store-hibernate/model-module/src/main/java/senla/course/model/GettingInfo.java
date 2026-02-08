@@ -1,4 +1,4 @@
-package model;
+package senla.course.model;
 
 public interface GettingInfo {
     public String getInfo();

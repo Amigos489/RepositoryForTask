@@ -1,4 +1,4 @@
-package exceptions;
+package senla.course.exceptions;
 
 public class InvalidInput extends Exception {
 

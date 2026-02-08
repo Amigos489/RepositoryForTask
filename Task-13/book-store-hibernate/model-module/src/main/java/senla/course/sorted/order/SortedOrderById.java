@@ -1,6 +1,6 @@
-package sorted.order;
+package senla.course.sorted.order;
 
-import model.Order;
+import senla.course.model.Order;
 import java.util.Comparator;
 
 public class SortedOrderById implements Comparator<Order> {

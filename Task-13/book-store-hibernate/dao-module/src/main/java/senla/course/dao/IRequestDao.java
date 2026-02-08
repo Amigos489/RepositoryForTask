@@ -1,9 +1,8 @@
-package dao;
+package senla.course.dao;
 
-import entitys.BookEntity;
-import entitys.RequestEntity;
-import exception.EntityListEmpty;
-import exception.EntityNotFound;
+import senla.course.entitys.RequestEntity;
+import senla.course.exception.EntityListEmpty;
+import senla.course.exception.EntityNotFound;
 
 import java.util.List;
 

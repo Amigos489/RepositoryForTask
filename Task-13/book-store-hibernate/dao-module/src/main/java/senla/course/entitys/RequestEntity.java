@@ -1,8 +1,7 @@
-package entitys;
+package senla.course.entitys;
 
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 
 @Entity
 @Table(name = "request")

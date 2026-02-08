@@ -1,13 +1,10 @@
-package dao;
+package senla.course.dao;
 
-import entitys.BookEntity;
-import entitys.RequestEntity;
-import exception.EntityListEmpty;
-import exception.EntityNotFound;
-import exception.QueryInvalidResult;
+import senla.course.entitys.BookEntity;
+import senla.course.entitys.RequestEntity;
+import senla.course.exception.EntityNotFound;
+import senla.course.exception.QueryInvalidResult;
 import org.hibernate.Session;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.NoResultException;

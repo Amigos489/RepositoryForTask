@@ -1,4 +1,4 @@
-package model;
+package senla.course.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

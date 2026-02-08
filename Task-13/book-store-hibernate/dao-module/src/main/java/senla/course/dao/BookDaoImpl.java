@@ -1,8 +1,8 @@
-package dao;
+package senla.course.dao;
 
-import entitys.BookEntity;
-import exception.EntityListEmpty;
-import exception.EntityNotFound;
+import senla.course.entitys.BookEntity;
+import senla.course.exception.EntityListEmpty;
+import senla.course.exception.EntityNotFound;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 

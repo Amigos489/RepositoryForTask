@@ -1,12 +1,14 @@
-package mapping;
+package senla.course.mapping;
 
+import org.springframework.stereotype.Component;
 import senla.course.entitys.OrderEntity;
-import enums.StatusOrder;
-import model.Order;
+import senla.course.enums.StatusOrder;
+import senla.course.model.Order;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@Component
 public class OrderMapping extends AbstractMapper<Order, OrderEntity> {
 
     @Override

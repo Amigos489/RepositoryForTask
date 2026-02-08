@@ -1,8 +1,8 @@
-package model;
+package senla.course.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import enums.StatusOrder;
+import senla.course.enums.StatusOrder;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

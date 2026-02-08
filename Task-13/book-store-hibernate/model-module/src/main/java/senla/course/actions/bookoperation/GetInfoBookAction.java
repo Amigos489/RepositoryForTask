@@ -1,8 +1,8 @@
-package actions.bookoperation;
+package senla.course.actions.bookoperation;
 
-import actions.AbstractGetInfoAction;
-import controller.Controller;
-import model.Book;
+import senla.course.actions.AbstractGetInfoAction;
+import senla.course.controller.Controller;
+import senla.course.model.Book;
 
 public class GetInfoBookAction extends AbstractGetInfoAction<Book> {
 

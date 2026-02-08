@@ -1,4 +1,4 @@
-package enums;
+package senla.course.enums;
 
 public enum StatusOperationCsv {
     ENTITY_IMPORT_CSV, ENTITY_EXPORT_CSV, ERROR_ENTITY_IMPORT_CSV, ERROR_ENTITY_EXPORT_CSV, INCORRECT_CHOICE

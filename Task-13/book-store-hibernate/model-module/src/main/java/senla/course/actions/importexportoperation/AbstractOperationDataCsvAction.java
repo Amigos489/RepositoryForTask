@@ -1,9 +1,9 @@
-package actions.importexportoperation;
+package senla.course.actions.importexportoperation;
 
-import controller.Controller;
-import enums.StatusOperationCsv;
-import exceptions.InvalidInput;
-import ui.IAction;
+import senla.course.controller.Controller;
+import senla.course.enums.StatusOperationCsv;
+import senla.course.exceptions.InvalidInput;
+import senla.course.ui.IAction;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

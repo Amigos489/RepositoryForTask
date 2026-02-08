@@ -1,6 +1,6 @@
-package sorted.request;
+package senla.course.sorted.request;
 
-import model.Request;
+import senla.course.model.Request;
 
 import java.util.Comparator;
 

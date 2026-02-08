@@ -1,4 +1,4 @@
-package entitys;
+package senla.course.entitys;
 
 import javax.persistence.*;
 import java.math.BigDecimal;

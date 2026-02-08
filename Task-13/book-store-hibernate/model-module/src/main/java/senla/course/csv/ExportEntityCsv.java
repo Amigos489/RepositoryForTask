@@ -1,7 +1,7 @@
-package csv;
+package senla.course.csv;
 
-import enums.StatusOperationCsv;
-import model.GettingInfo;
+import senla.course.enums.StatusOperationCsv;
+import senla.course.model.GettingInfo;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;

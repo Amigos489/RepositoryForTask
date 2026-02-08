@@ -1,9 +1,9 @@
-package actions.orderoperation;
+package senla.course.actions.orderoperation;
 
-import controller.Controller;
-import enums.StatusOrder;
-import exceptions.InvalidInput;
-import ui.IAction;
+import senla.course.controller.Controller;
+import senla.course.enums.StatusOrder;
+import senla.course.exceptions.InvalidInput;
+import senla.course.ui.IAction;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

@@ -10,8 +10,8 @@
     <property name="hibernate.connection.password">balabol</property>
     <property name="hibernate.show_sql">true</property>
 
-    <mapping class="entitys.BookEntity"/>
-    <mapping class="entitys.OrderEntity"/>
-    <mapping class="entitys.RequestEntity"/>
+    <mapping class="senla.course.entitys.BookEntity"/>
+    <mapping class="senla.course.entitys.OrderEntity"/>
+    <mapping class="senla.course.entitys.RequestEntity"/>
   </session-factory>
 </hibernate-configuration>
