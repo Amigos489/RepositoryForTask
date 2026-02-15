@@ -31,8 +31,3 @@
 2026-02-08 23:14:53 ERROR DaoManager:69 - Книга с указанным id не найден.
 2026-02-08 23:15:13 ERROR DaoManager:109 - Список пустой.
 2026-02-08 23:15:46 ERROR DaoManager:69 - Книга с указанным id не найден.
-2026-02-15 21:51:03 ERROR HibernateUtil:18 - error connection data base
-2026-02-15 21:51:54 ERROR HibernateUtil:18 - error connection data base
-2026-02-15 21:52:42 ERROR HibernateUtil:18 - error connection data base
-2026-02-15 21:56:18 ERROR HibernateUtil:18 - error connection data base
-2026-02-15 22:01:36 ERROR HibernateUtil:18 - error connection data base

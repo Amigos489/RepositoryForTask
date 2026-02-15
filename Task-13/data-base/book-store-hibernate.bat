@@ -15,7 +15,7 @@ rem Заполнение таблиц данными
 psql -f insert_all_tables.sql postgresql://%user%:%password%@%host%:%port%/%dbname%
 
 rem Удаление таблиц (убрать rem в команде ниже)
-psql -f drop_all_tables.sql postgresql://%user%:%password%@%host%:%port%/%dbname%
+rem psql -f drop_all_tables.sql postgresql://%user%:%password%@%host%:%port%/%dbname%
 
 echo database done!
 pause
