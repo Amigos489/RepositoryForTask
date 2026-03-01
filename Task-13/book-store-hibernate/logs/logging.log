@@ -27,3 +27,7 @@
 2026-02-07 04:18:56 ERROR DaoManager:67 - Книга с указанным id не найден.
 2026-02-07 04:30:35 ERROR DaoManager:67 - Книга с указанным id не найден.
 2026-02-07 04:33:44 ERROR DaoManager:120 - A different object with the same identifier value was already associated with the session : [entitys.OrderEntity#4]
+2026-02-08 23:14:14 ERROR DaoManager:45 - Книга с указанным id не найден.
+2026-02-08 23:14:53 ERROR DaoManager:69 - Книга с указанным id не найден.
+2026-02-08 23:15:13 ERROR DaoManager:109 - Список пустой.
+2026-02-08 23:15:46 ERROR DaoManager:69 - Книга с указанным id не найден.

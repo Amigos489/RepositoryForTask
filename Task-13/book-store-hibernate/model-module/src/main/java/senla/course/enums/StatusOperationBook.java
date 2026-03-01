@@ -1,0 +1,5 @@
+package senla.course.enums;
+
+public enum StatusOperationBook {
+    BOOK_NOT_FOUND, BOOK_ADD_WAREHOUSE, BOOK_ALREADY_ADD_WAREHOUSE, BOOK_WRITE_WAREHOUSE, BOOK_ALREADY_WRITE_WAREHOUSE
+}
