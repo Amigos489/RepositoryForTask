@@ -19,7 +19,7 @@ public class HibernateConfig {
     public DataSource dataSource() {
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("org.postgresql.Driver");
-        ds.setUrl("jdbc:postgresql://localhost:5432/book-store-hibernate");
+        ds.setUrl("jdbc:postgresql://db:5432/book-store-hibernate");
         ds.setUsername("postgres");
         ds.setPassword("balabol");
         return ds;
