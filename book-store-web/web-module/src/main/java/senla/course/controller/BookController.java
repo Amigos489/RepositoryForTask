@@ -1,5 +1,6 @@
 package senla.course.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import senla.course.dto.BookDto;
 import senla.course.service.ServiceManager;
@@ -15,26 +16,31 @@ public class BookController extends Controller {
     }
 
     @PostMapping("/add/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public void addBookToWarehouse(@PathVariable("id") int id) {
         serviceManager.addBookToWarehouse(id);
     }
 
     @PostMapping("/write/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public void writeBookToWarehouse(@PathVariable("id") int id) {
         serviceManager.writeBookToWarehouse(id);
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public BookDto getInfoBook(@PathVariable("id") int id) {
         return serviceManager.getInfoBook(id);
     }
 
     @GetMapping("/all/{criteria}")
+    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
     public List<BookDto> getInfoAllBooks(@PathVariable("criteria") String criteria) {
         return serviceManager.getAllBook(criteria);
     }
 
     @GetMapping("/stale/{criteria}")
+    @PreAuthorize("hasRole('ADMIN')")
     public List<BookDto> getInfoStaleBooks(@PathVariable("criteria") String criteria) {
         return serviceManager.getStaleBook(criteria);
     }

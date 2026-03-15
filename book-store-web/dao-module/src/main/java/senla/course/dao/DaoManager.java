@@ -1,14 +1,8 @@
 package senla.course.dao;
 
-import org.hibernate.SessionFactory;
 import senla.course.entitys.BookEntity;
 import senla.course.entitys.OrderEntity;
 import senla.course.entitys.RequestEntity;
-import senla.course.exception.EntityListEmpty;
-import senla.course.exception.EntityNotFound;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;

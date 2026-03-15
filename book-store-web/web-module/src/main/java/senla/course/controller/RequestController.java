@@ -1,5 +1,6 @@
 package senla.course.controller;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ public class RequestController extends Controller {
     }
 
     @GetMapping("/all/{criteria}")
+    @PreAuthorize("hasRole('ADMIN')")
     public List<RequestDto> getInfoAllRequest(@PathVariable("criteria") String criteria) {
         return serviceManager.getAllRequest(criteria);
     }

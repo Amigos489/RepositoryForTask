@@ -2,9 +2,6 @@ package senla.course.dao;
 
 import org.hibernate.SessionFactory;
 import senla.course.entitys.BookEntity;
-import senla.course.exception.EntityListEmpty;
-import senla.course.exception.EntityNotFound;
-import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;

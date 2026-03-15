@@ -14,4 +14,10 @@
     <include file="classpath:db/changelog/V6_insert_request.sql"/>
     <include file="classpath:db/changelog/V7_insert_new_book.sql"/>
     <include file="classpath:db/changelog/V8_update_name_book_id6.sql"/>
+    <include file="classpath:db/changelog/V9_create_table_users.sql"/>
+    <include file="classpath:db/changelog/V10_create_table_roles.sql"/>
+    <include file="classpath:db/changelog/V11_create_table_users_roles.sql"/>
+    <include file="classpath:db/changelog/V12_insert_roles.sql"/>
+    <include file="classpath:db/changelog/V13_insert_users.sql"/>
+    <include file="classpath:db/changelog/V14_insert_users_roles.sql"/>
 </databaseChangeLog>
