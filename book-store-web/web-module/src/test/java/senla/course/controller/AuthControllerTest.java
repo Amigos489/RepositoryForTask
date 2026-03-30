@@ -1,39 +1,74 @@
 package senla.course.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.*;
-
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import senla.course.LoginRequest;
 import senla.course.security.JwtTokenProvider;
+import senla.course.service.MyUserDetailsService;
 
-@RestController
-@RequestMapping("/auth")
-public class AuthController {
+import java.util.HashSet;
 
-    private final AuthenticationManager authenticationManager;
-    private final JwtTokenProvider jwtTokenProvider;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-    public AuthController(AuthenticationManager authenticationManager,
-                          JwtTokenProvider jwtTokenProvider) {
-        this.authenticationManager = authenticationManager;
-        this.jwtTokenProvider = jwtTokenProvider;
+
+@DisplayName("Test AuthController")
+@ExtendWith(MockitoExtension.class)
+public class AuthControllerTest {
+
+    @Mock
+    MyUserDetailsService myUserDetailsService;
+
+    @Mock
+    AuthenticationManager authenticationManager;
+
+    @Mock
+    JwtTokenProvider jwtTokenProvider;
+
+    MockMvc mockMvc;
+
+    @InjectMocks
+    AuthController authController;
+
+    @Test
+    @DisplayName("Given login When correct login Then get status ok")
+    public void login_correctLogin_getStatusOk() throws Exception {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        LoginRequest authLogin = new LoginRequest("loginTest", "passwordTest");
+        String stringAuthLogin = objectMapper.writeValueAsString(authLogin);
+
+        UserDetails user = new User("loginTest", "passwordTest", new HashSet<>());
+
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
+                new UsernamePasswordAuthenticationToken(user,null, user.getAuthorities());
+
+        when(authenticationManager.authenticate(any()))
+                .thenReturn(usernamePasswordAuthenticationToken);
+
+        mockMvc.perform(post("/auth/login")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(stringAuthLogin))
+                .andExpect(status().isOk());
     }
 
-    @PostMapping("/login")
-    public String login(@RequestBody LoginRequest request) {
-
-        Authentication auth = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        request.getUsername(),
-                        request.getPassword()
-                )
-        );
-
-        UserDetails userDetails = (UserDetails) auth.getPrincipal();
-
-        return jwtTokenProvider.generateToken(userDetails);
+    @BeforeEach
+    void setUp() {
+        mockMvc = MockMvcBuilders.standaloneSetup(authController).build();
     }
 }

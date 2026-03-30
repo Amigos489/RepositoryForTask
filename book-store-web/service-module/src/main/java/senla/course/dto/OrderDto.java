@@ -1,12 +1,13 @@
 package senla.course.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import senla.course.enums.OrderStatus;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class OrderDto {
-
+    @JsonProperty("id")
     private int orderId;
     private LocalDate dateComplection;
     private int bookId;
@@ -73,5 +74,9 @@ public class OrderDto {
 
     public Integer getBookId() {
         return bookId;
+    }
+
+    public void setId(int orderId) {
+        this.orderId = orderId;
     }
 }

@@ -16,7 +16,7 @@ import java.util.List;
 public class BookService {
 
     @Value("${warehouse.countMonthDefineStaleBook}")
-    private int countMonthDefineStaleBook;
+    private int countMonthDefineStaleBook=6;
     private DaoManager daoManager;
     private Mapper<BookDto, BookEntity> mapper;
 

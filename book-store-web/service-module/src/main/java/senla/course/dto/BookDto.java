@@ -1,9 +1,12 @@
 package senla.course.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class BookDto {
+    @JsonProperty("id")
     private int bookId;
     private String nameBook;
     private String authorBook;
@@ -12,7 +15,7 @@ public class BookDto {
     private BigDecimal price;
     private boolean availability;
 
-    BookDto() {}
+    public BookDto() {}
 
     public BookDto(int bookId, String nameBook, String authorBook, LocalDate datePublication, LocalDate dateAddWarehouse, BigDecimal price, boolean availability) {
         this.bookId = bookId;

@@ -1,7 +1,10 @@
 package senla.course.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class RequestDto {
 
+    @JsonProperty("id")
     private int requestId;
     private int bookId;
     private String nameBook;

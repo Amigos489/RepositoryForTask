@@ -29,4 +29,12 @@ public class RoleEntity {
     public Set<UserEntity> getUsers() {
         return users;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setUsers(Set<UserEntity> users) {
+        this.users = users;
+    }
 }

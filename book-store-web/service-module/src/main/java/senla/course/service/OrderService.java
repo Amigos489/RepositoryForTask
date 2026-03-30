@@ -80,7 +80,7 @@ public class OrderService {
     public List<OrderDto> getAllOrder(String critearia) {
         List<OrderEntity> orders = daoManager.operationGetAllOrder(critearia);
         if (orders.isEmpty()) {
-            throw new ListBookEmptyException();
+            throw new ListOrderEmptyException();
         } else {
             return mapper.mappingEntityListToListDto(orders);
         }

@@ -2,7 +2,6 @@ package senla.course.service;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import senla.course.dao.DaoManager;
 import senla.course.dto.RequestDto;
 import senla.course.entitys.BookEntity;
